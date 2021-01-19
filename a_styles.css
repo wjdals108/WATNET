@@ -1,0 +1,310 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    word-break: keep-all;
+    min-width: 320px;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.mode {
+    background-image: url(./assets/day-mode.png);
+    background-size: cover;
+    border-radius: 50%;
+    position: fixed;
+    right: 8px;
+    bottom: 8px;
+    width: 40px;
+    height: 40px;
+}
+
+/* head-container css */
+
+.head-container {
+    font-family: 'Bebas Neue', sans-serif;
+    width: 100%;
+    height: 100%;
+    border-bottom: 8px solid #222;
+    position: relative;
+    z-index: 1;
+}
+
+.head-container::after {
+    width: 100%;
+    height: 100%;
+    content: "";
+    border-bottom: 8px solid #222;
+    background-image: url(./assets/background.jpg);
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.main-header {
+    margin: 0 24px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#logo {
+    margin-top: 4px;
+    padding-top: 8px;
+    width: 140px;
+    height: auto;
+    padding: 0 20px;
+}
+
+#login-btn {
+    width: 59px;
+    height: 28px;
+    margin-top: 5px;
+    padding: 4px 8px;
+    border-radius: 3px;
+    border: 0px solid #000;
+    background-color: #e50914;
+    color: #fff;
+    font-size: 14px;
+}
+
+/* main-section css */
+
+.main-section {
+    margin: 70px 24px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-section h1 {
+    font-size: 50px;
+    font-weight: 400;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.main-section h2,
+.introduce-section h2,
+.main-board-section h2 {
+    font-size: 18px;
+    font-weight: 200;
+    margin-bottom: 16px;
+    word-break: keep-all;
+    text-align: center;
+}
+
+.main-section h3 {
+    font-size: 18px;
+    font-weight: 200;
+    padding: 0 43px;
+    word-break: keep-all;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.main-section form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 95px;
+}
+
+#main-section-input {
+    width: 100%;
+    height: 48px;
+    padding: 10px 10px 0;
+    border: solid 1px #8c8c8c;
+    border-radius: 2px;
+    display: block;
+    color: #000;
+    margin-bottom: 8px;
+}
+
+#section-btn {
+    width: 154px;
+    height: 40px;
+    margin: 4px 0;
+    padding: 0 16px;
+    color: #fff;
+    background-color: #e50914;
+    font-size: 16px;
+    border-radius: 3px;
+    border: 0px solid #000;
+}
+
+/* introduce-section css */
+
+.introduce-container {
+    width: 100%;
+    height: 100%;
+    border-bottom: 8px solid #222;
+}
+
+.introduce-section {
+    padding: 50px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.introduce-section h1 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.introduce-section h2,
+.main-board-section h2 {
+    font-size: 20px;
+    font-weight: 200;
+    margin-bottom: 16px;
+    word-break: keep-all;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#guide-img {
+    width: auto;
+    height: 200px;
+}
+
+/* main-board-container css */
+
+.main-board-container {
+    width: 100%;
+    height: 100%;
+    border-bottom: 8px solid #222;
+}
+
+.main-board-section {
+    padding: 50px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.main-board-section h1 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.link-board {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#watcha-link-btn {
+    background-image: url(./assets/watcha-logo.jpeg);
+    background-size: cover;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+#netflix-link-btn {
+    background-image: url(./assets/netflix-logo.png);
+    background-size: cover;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+/* footer-container css */
+
+.footer-container {
+    width: 100%;    
+    height: 300px;
+    padding: 50px 24px;
+}
+
+ul li {
+    list-style: none;
+    padding: 20px;
+}
+
+footer ul li span {
+    font-size: 13px;
+}
+
+footer ul li span a {
+    text-decoration: none;
+    color: #757575;
+}
+
+@media (min-width:767px) {
+
+    .main-header {        
+        margin: 0 40px 150px;
+    }
+
+    .main-section h1 {
+
+        font-size: 80px;
+    }
+
+    .main-section h2 {
+        font-size: 30px;
+    }
+
+    .main-section h3 {
+        font-size: 25px;
+    }
+
+    #main-section-input {
+        width: 60%;
+    }
+
+    #section-btn {
+        margin-bottom : 100px;
+    }
+
+    #logo {
+        margin-top: 10px;
+        width: 180px;
+        height: auto;
+        padding: 0 10px;
+    }
+    
+    #login-btn {
+        width: 82px;
+        height: 35px;
+        margin-top: 20px;
+        padding: 4px 8px;
+        border-radius: 3px;
+        border: 0px solid #000;
+        background-color: #e50914;
+        color: #fff;
+        font-size: 14px;
+    }
+
+    .introduce-section h1 {
+        font-size: 40px;
+    }
+
+    .introduce-section h2 {
+        font-size: 25px;
+    }
+
+    #guide-img {
+        margin: 60px 0;
+    }
+}
