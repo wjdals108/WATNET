@@ -126,7 +126,7 @@ body {
 }
 
 #main-section-input {
-    width: 100%;
+    width: 300px;
     height: 48px;
     padding: 10px 10px 0;
     border: solid 1px #8c8c8c;
@@ -163,13 +163,13 @@ body {
     align-items: center;
 }
 
-.introduce-section h1 {
+.introduce-text h1 {
     font-size: 30px;
     text-align: center;
     margin-bottom: 20px;
 }
 
-.introduce-section h2,
+.introduce-text h2,
 .main-board-section h2 {
     font-size: 20px;
     font-weight: 200;
@@ -207,9 +207,9 @@ body {
 }
 
 .link-board {
-    width: 80%;
+    width: 400px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 #watcha-link-btn {
@@ -248,4 +248,142 @@ footer ul li span {
 footer ul li span a {
     text-decoration: none;
     color: #757575;
+}
+
+@media (min-width:768px) {
+
+    .main-header {        
+        margin: 0 40px 150px;
+    }
+
+    .main-section h1 {
+
+        font-size: 80px;
+    }
+
+    .main-section h2 {
+        font-size: 30px;
+    }
+
+    .main-section h3 {
+        font-size: 25px;
+    }
+
+    #main-section-input {
+        width: 450px;
+    }
+
+    #section-btn {
+        margin-bottom : 100px;
+    }
+
+    #logo {
+        margin-top: 10px;
+        width: 180px;
+        height: auto;
+        padding: 0 10px;
+    }
+    
+    #login-btn {
+        width: 82px;
+        height: 35px;
+        margin-top: 20px;
+        padding: 4px 8px;
+        border-radius: 3px;
+        border: 0px solid #000;
+        background-color: #e50914;
+        color: #fff;
+        font-size: 14px;
+    }
+
+    .introduce-text h1 {
+        font-size: 40px;
+    }
+
+    .introduce-text h2 {
+        font-size: 25px;
+    }
+
+    #guide-img {
+        margin: 60px 0;
+    }
+}
+
+@media (min-width:1024px) {
+    #main-section-input {
+        height: 60px;
+        margin: 0;
+    }
+
+    #section-btn {
+        margin: 0;
+        height: 60px;
+    }
+
+    .main-section form {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 200px;
+    }
+
+    .introduce-text h1 {
+        font-size: 60px;
+    }
+
+    .introduce-text h2 {
+        font-size: 30px;
+    }
+
+    .introduce-section {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 100px 0;
+        margin: 0 10%;
+    }
+
+    .introduce-text {
+        width: 50%;
+    }
+
+    #guide-img {
+        margin:0;
+        width: 300px;
+        height: 300px;
+    }
+
+    .main-board-section {
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        padding: 150px 0;
+        margin: 0 10%;
+    }
+
+    .main-board-text {
+        width: 50%;
+    }
+
+    .main-board-section h1 {
+        font-size: 40px;
+    }
+
+    .main-board-section h2 {
+        font-size: 25px;
+    }
+    
+    .link-board {
+        width: 50%;
+    }
+    
+    #watcha-link-btn {
+        width: 13vw;
+        height: 13vw;
+    }
+    
+    #netflix-link-btn {
+        width: 13vw;
+        height: 13vw;
+    }
 }
