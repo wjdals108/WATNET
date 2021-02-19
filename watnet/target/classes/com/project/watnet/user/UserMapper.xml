@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.project.watnet.user.UserMapper">
+ 	<insert id="insUser">
+ 		INSERT INTO t_user
+ 		( userId, userPw, userMail, nickname, pNum, profileImg, userPoint )
+ 		VALUES
+ 		( #{userId}, #{userPw}, #{userMail}, #{nickname}, #{pNum}, #{profileImg}, 1000)
+ 	</insert>
+ 
+ 	<select id="selUser" resultType="UserEntity">
+ 		SELECT userPk, userId, userPw, userMail, nickname, profileImg, userPoint
+ 		, DATE_FORMAT(regDt, '%Y년 %m월 %d일 (%H:%i)') as regDt 
+ 		FROM t_user
+ 		<where>
+ 			<if test="userId != null and userId != ''">
+ 				userId = #{userId}
+ 			</if>
+ 			<if test="userPk > 0">
+ 				userPk = #{userPk}
+ 			</if>
+ 			<if test="nickname != null and nickname != ''">
+ 				nickname = #{nickname}
+ 			</if>
+ 		</where>
+ 	</select>
+ 	
+ </mapper>

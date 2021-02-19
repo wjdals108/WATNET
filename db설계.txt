@@ -1,0 +1,135 @@
+user
+
+userPk
+userId
+userPw
+userMail
+regDt
+nm 또는 nickname
+userPhoneNumber 이거는 휴대폰 인증 기능을 넣을수있다면? 돈내야함 건당20원
+profileImg 요거는 선택사항
+point	결제시스템 구현하기에 어려움이 있으니
+
+
+
+
+party
+
+partyPk				board 참조
+leaderPk				user 참조
+user1Pk				user 참조		null허용
+user2Pk				user 참조		null허용
+user3Pk				user 참조		null허용
+startDt				board 참조
+endDt				board 참조
+recruitNum	max는 4	default 1	board 참조
+
+
+primary key는 partyPk, leaderPk 묶어서
+
+
+
+boardManage
+
+category
+nm
+orderby	default 0
+
+
+
+board
+
+boardPk
+category				boardManage 참조
+seq
+startDt				satrtDt 지나면 표시
+endDt				endDt 지나면 목록에서 제외
+price				남은날짜를 계산해서
+recruitNum	max는 4		max 다 차면 목록에서 다찼다고 표시
+partyPk
+isDel
+
+
+
+message				쪽지기능은 파티원끼리만 보내고 받고 할 수 있음 - 패킷, 통신 이런걸로 안만들고 쪽지함을 게시판형식으로 userPk가 맞는경우에만 보이게끔
+
+messagePk
+sendUserPk			user 참조
+receiveUserPk			user 참조
+ctnt
+regDt
+isDel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE t_user(
+	userPk INT UNSIGNED AUTO_INCREMENT,
+	userId VARCHAR(20) NOT NULL UNIQUE,
+	userPw VARCHAR(100) NOT NULL,
+	userMail VARCHAR(30) NOT NULL,
+	regDt DATETIME DEFAULT NOW(),
+	nickname VARCHAR(20) NOT NULL UNIQUE,
+	profileImg VARCHAR(70),
+	POINT INT UNSIGNED,
+	PRIMARY KEY(userPk)
+);
+
+CREATE TABLE t_board_manage(
+	category INT UNSIGNED AUTO_INCREMENT,
+	nm VARCHAR(20) NOT NULL,
+	orderby INT UNSIGNED DEFAULT 0,
+	PRIMARY KEY(category)
+);
+
+CREATE TABLE t_party(
+	partyPk INT UNSIGNED NOT NULL,
+	leaderPk INT UNSIGNED,
+	user1Pk INT UNSIGNED,
+	user2Pk INT UNSIGNED,
+	user3Pk INT UNSIGNED,
+	startDt DATE DEFAULT NOW() NOT NULL,
+	endDt DATE DEFAULT NOW() NOT NULL,
+	recruitNum INT(1) UNSIGNED NOT NULL,
+	PRIMARY KEY(partyPk, leaderPk),
+	FOREIGN KEY (partyPk) REFERENCES t_board(partyPk),
+	FOREIGN KEY (leaderPk) REFERENCES t_user(userPk),
+	FOREIGN KEY (user1Pk) REFERENCES t_user(userPk),
+	FOREIGN KEY (user2Pk) REFERENCES t_user(userPk),
+	FOREIGN KEY (user3Pk) REFERENCES t_user(userPk)
+);
+
+
+CREATE TABLE t_board(
+	boardPk INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	category INT UNSIGNED NOT NULL,
+	seq INT UNSIGNED NOT NULL,
+	startDt DATE DEFAULT NOW() NOT NULL,
+	endDt DATE DEFAULT NOW() NOT NULL,
+	price INT UNSIGNED NOT NULL,
+	recruitNum INT(1) UNSIGNED NOT NULL,
+	partyPk INT UNSIGNED NOT NULL UNIQUE,
+	isDel INT(1) DEFAULT 0 CHECK (isDel IN (0, 1)),
+	FOREIGN KEY (category) REFERENCES t_board_manage(category)
+);
+
+CREATE TABLE t_message(
+	messagePk INT UNSIGNED PRIMARY KEY,
+	sendUserPk INT UNSIGNED NOT NULL,
+	receiveUserPk INT UNSIGNED NOT NULL,
+	ctnt VARCHAR(2000) NOT NULL,
+	regDt DATETIME DEFAULT NOW(),
+	isDel INT(1) DEFAULT 0 CHECK (isDel IN (0, 1)),
+	FOREIGN KEY (sendUserPk) REFERENCES t_user(userPk),
+	FOREIGN KEY (receiveUserPk) REFERENCES t_user(userPk)
+);
