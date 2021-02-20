@@ -27,9 +27,15 @@ public class UserService {
 		return mapper.insUser(p);
 	}
 	
-	
 	public int chkId(UserEntity p) {
 		if(mapper.selUser(p) == null) {
+			return 0;
+		}
+		return 1;
+	}
+	
+	public int chkNickname(UserEntity p) {
+		if(mapper.selNickname(p) == null) {
 			return 0;
 		}
 		return 1;

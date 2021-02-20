@@ -9,4 +9,5 @@ import com.project.watnet.model.UserEntity;
 public interface UserMapper {
 	int insUser(UserDomain p);
 	UserEntity selUser(UserEntity p);
+	UserEntity selNickname(UserEntity p);
 }

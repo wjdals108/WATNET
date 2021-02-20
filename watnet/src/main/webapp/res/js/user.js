@@ -1,4 +1,6 @@
 var joinBtnElem = document.querySelector('#joinBtn')
+var idChkElem = document.querySelector('#idChk')
+var nicknameChkElem = document.querySelector('#nicknameChk')
 
 if (joinBtnElem) {
 	var userIdElem = document.querySelector('#id')
@@ -9,8 +11,56 @@ if (joinBtnElem) {
 	var pNumElem = document.querySelector('#phoneNumber')
 	var profileImgElem = document.querySelector('#profileImg')
 	var recIdElem = document.querySelector('#recId')
+	
+	//아이디 중복확인
+	function idChk() {
+		if (userIdElem.value === '') {
+			alert('아이디를 입력해 주세요')
+			userIdElem.focus()
+			return
+		}
+		
+		fetch(`/userAjax/chkId?userId=${userIdElem.value}`)
+		.then(function(res) {
+			return res.json()
+		})
+		.then(function(myJson) {
+			if(myJson === 1) {
+				alert('중복된 아이디가 있습니다.')
+				return
+			} else {
+				alert('아이디 사용이 가능합니다.')
+			}
+		})
+	}
+	idChkElem.addEventListener('click', idChk)
 
 
+	//닉네임 중복확인
+	function nicknameChk() {
+		if(nicknameElem.value === '') {
+			alert('닉네임을 입력해 주세요')
+			nicknameElem.focus()
+			return
+		}
+		
+		fetch(`/userAjax/chkNickname?nickname=${nicknameElem.value}`)
+		.then(function(res) {
+			return res.json()
+		})
+		.then(function(myJson) {
+			if(myJson === 1) {
+				alert('중복된 닉네임이 있습니다.')
+				return
+			} else {
+				alert('닉네임 사용이 가능합니다.')
+			}
+		})
+	}
+	nicknameChkElem.addEventListener('click', nicknameChk)
+
+
+	//회원가입
 	function join() {
 
 		if (userIdElem.value === '') {

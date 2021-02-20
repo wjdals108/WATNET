@@ -11,20 +11,13 @@
  	</insert>
  
  	<select id="selUser" resultType="UserEntity">
- 		SELECT userPk, userId, userPw, userMail, nickname, profileImg, userPoint
- 		, DATE_FORMAT(regDt, '%Y년 %m월 %d일 (%H:%i)') as regDt 
- 		FROM t_user
- 		<where>
- 			<if test="userId != null and userId != ''">
- 				userId = #{userId}
- 			</if>
- 			<if test="userPk > 0">
- 				userPk = #{userPk}
- 			</if>
- 			<if test="nickname != null and nickname != ''">
- 				nickname = #{nickname}
- 			</if>
- 		</where>
+ 		SELECT * FROM t_user
+ 		WHERE userId = #{userId}
+ 	</select>
+ 	
+ 	<select id="selNickname" resultType="UserEntity">
+ 		SELECT * FROM t_user
+ 		WHERE nickname = #{nickname}
  	</select>
  	
  </mapper>
