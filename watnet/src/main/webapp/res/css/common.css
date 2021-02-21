@@ -41,7 +41,8 @@ ul>li {
     height: 40px;
 }
 
-#index-login-btn {
+#index-login-btn,
+#index-logout-btn {
     width: 90px;
     height: 32px;
     border-radius: 24px;

@@ -3,8 +3,8 @@
 <div class="login-container">
 	<div class="login-form">
 		<img id="login-watnet-logo" src="/res/img/logo.png" alt="watnet logo">
-		<input type="text" placeholder="아이디를 입력하세요"> <input
-			type="password" placeholder="패스워드를 입력하세요">
+		<input id="loginId" type="text" placeholder="아이디를 입력하세요">
+		<input id="loginPw" type="password" placeholder="패스워드를 입력하세요">
 		<div class="login-anchor">
 			<a href="/user/join">회원가입</a> <a href="###">아이디/비밀번호 찾기</a>
 		</div>

@@ -17,6 +17,11 @@ public class UserAjaxController {
 	@Autowired
 	private UserService service;
 	
+	@PostMapping("/login")
+	public int login(@RequestBody UserEntity p) {
+		return service.login(p);
+	}
+	
 	@PostMapping
 	public int insUser(@RequestBody UserDomain p) {
 		return service.insUser(p);

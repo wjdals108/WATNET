@@ -1,7 +1,60 @@
 var joinBtnElem = document.querySelector('#joinBtn')
 var idChkElem = document.querySelector('#idChk')
 var nicknameChkElem = document.querySelector('#nicknameChk')
+var loginBtnElem = document.querySelector('#login-btn')
 
+//login.jsp --------------------- js
+if(loginBtnElem) {
+	var loginIdElem = document.querySelector('#loginId')
+	var loginPwElem = document.querySelector('#loginPw')
+	
+	function login() {
+		if(loginIdElem.value === '') {
+			alert('아이디를 입력하세요')
+			loginIdElem.focus()
+			return
+		} else if(loginPwElem.value === '') {
+			alert('비밀번호를 입력하세요')
+			loginPwElem.focus()
+			return
+		}
+		
+		var param = {
+			userId: loginIdElem.value,
+			userPw: loginPwElem.value,
+		}
+
+		fetch('/userAjax/login', {
+			method: 'post',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(param)
+		}).then(function(res) {
+			return res.json()
+		}).then(function(myJson) {
+			if(myJson === 1) {
+				location.href="/index"
+				return
+			} else if(myJson === 2) {
+				alert('등록된 아이디가 없습니다.')
+				loginIdElem.focus()
+				return
+			} else if(myJson === 3) {
+				alert('비밀번호가 틀렸습니다.')
+				loginPwElem.focus()
+				return
+			}
+		})
+		
+	}
+	
+	loginBtnElem.addEventListener('click', login)
+}
+
+
+
+//join.jsp---------------js
 if (joinBtnElem) {
 	var userIdElem = document.querySelector('#id')
 	var userPwElem = document.querySelector('#pw')
@@ -88,6 +141,9 @@ if (joinBtnElem) {
 			pNumElem.focus()
 			return
 		}
+		
+		var formData = new FormData()
+		formData.append("profileImg", profileImgElem.files[0])
 
 		var param = {
 			userId: userIdElem.value,
@@ -95,7 +151,6 @@ if (joinBtnElem) {
 			userMail: userEmailElem.value,
 			nickname: nicknameElem.value,
 			pNum: pNumElem.value,
-			profileImg: profileImgElem.value,
 			recId: recIdElem.value,
 		}
 
