@@ -6,12 +6,12 @@
 		<div class="id_pw-form">
 			<ul class="id_pw-list">
 				<li><span>아이디</span> <input id="id" type="text"
-					placeholder="아이디">
+					placeholder="아이디" required>
 					<button id="idChk" type="button">중복확인</button></li>
 				<li><span>비밀번호</span> <input id="pw" type="password"
-					placeholder="비밀번호"></li>
+					placeholder="비밀번호" required></li>
 				<li><span>비밀번호확인</span> <input id="pwChk" type="password"
-					placeholder="비밀번호 확인"></li>
+					placeholder="비밀번호 확인" required></li>
 			</ul>
 		</div>
 	</div>
@@ -20,12 +20,12 @@
 		<div class="join_userinfo-form">
 			<ul class="join_userinfo-list">
 				<li><span>닉네임</span> <input id="nickname" type="text"
-					placeholder="닉네임">
+					placeholder="닉네임" required>
 					<button id="nicknameChk" type="button">중복확인</button></li>
-				<li><span>이메일</span> <input id="email" type="text"
-					placeholder="이메일"></li>
+				<li><span>이메일</span> <input id="email" type="email"
+					placeholder="이메일" required></li>
 				<li><span>휴대폰 번호</span> <input id="phoneNumber" type="text"
-					placeholder="휴대폰 번호">
+					placeholder="휴대폰 번호" required>
 					<button id="phoneNumberChk" type="button">휴대폰인증</button></li>
 			</ul>
 		</div>

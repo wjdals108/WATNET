@@ -21,4 +21,7 @@ public class UserController {
 
 	@GetMapping("/join")
 	public void join() {}
+	
+	@GetMapping("/find/find")
+	public void find() {}
 }

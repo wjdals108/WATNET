@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.project.watnet.model.UserDomain;
 import com.project.watnet.model.UserEntity;
@@ -23,8 +24,10 @@ public class UserAjaxController {
 	}
 	
 	@PostMapping
-	public int insUser(@RequestBody UserDomain p) {
-		return service.insUser(p);
+	public int insUser(UserDomain p) {
+		System.out.println(p.getImg());
+		MultipartFile profileImg = p.getImg();
+		return service.insUser(p, profileImg);
 	}
 	
 	@GetMapping("/chkId")

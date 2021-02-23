@@ -1,12 +1,17 @@
 package com.project.watnet.user;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.servlet.http.HttpSession;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.project.watnet.Const;
+import com.project.watnet.FileUtils;
 import com.project.watnet.SecurityUtils;
 import com.project.watnet.model.UserDomain;
 import com.project.watnet.model.UserEntity;
@@ -21,6 +26,9 @@ public class UserService {
 
 	@Autowired
 	private HttpSession hs;
+
+	@Autowired
+	private FileUtils fUtils;
 
 	// 1:로그인 성공, 2:아이디 없음, 3:비밀번호가 틀림
 	public int login(UserEntity p) {
@@ -38,7 +46,7 @@ public class UserService {
 		return 1;
 	}
 
-	public int insUser(UserDomain p) {
+	public int insUser(UserDomain p, MultipartFile mf) {
 		if (p.getUserId() == null || p.getUserId().length() < 2 || chkId(p) == 1) {
 			return 0;
 		}
@@ -47,7 +55,30 @@ public class UserService {
 		String hashPw = sUtils.getHashPw(p.getUserPw(), salt);
 		p.setUserPw(hashPw);
 
-		return mapper.insUser(p);
+		if(mf==null) {
+			p.setProfileImg(null);
+			return mapper.insUser(p);
+		} else {
+			//profileImg DB에 저장하기 위해 하는부분
+			String profileImg = fUtils.getRandomFileNm(mf.getOriginalFilename());
+			
+			p.setProfileImg(profileImg);
+			
+			int result = mapper.insUser(p);
+			
+			int userPk = p.getUserPk();
+			try {
+				String folder = "/res/img/user/" + userPk;
+				String basePath = fUtils.getBasePath(folder);
+				fUtils.makeFolders(basePath);
+				File file = new File(basePath, profileImg);
+				mf.transferTo(file);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
+			return result;
+		}
+
 	}
 
 	public int chkId(UserEntity p) {

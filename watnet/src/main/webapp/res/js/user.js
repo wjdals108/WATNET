@@ -143,23 +143,19 @@ if (joinBtnElem) {
 		}
 		
 		var formData = new FormData()
-		formData.append("profileImg", profileImgElem.files[0])
-
-		var param = {
-			userId: userIdElem.value,
-			userPw: userPwElem.value,
-			userMail: userEmailElem.value,
-			nickname: nicknameElem.value,
-			pNum: pNumElem.value,
-			recId: recIdElem.value,
+		formData.append("userId", userIdElem.value)
+		formData.append("userPw", userPwElem.value)
+		formData.append("userMail", userEmailElem.value)
+		formData.append("nickname", nicknameElem.value)
+		formData.append("pNum", pNumElem.value)
+		formData.append("recId", recIdElem.value)
+		if(profileImgElem.files.length !== 0){
+			formData.append("img", profileImgElem.files[0])			
 		}
-
+		
 		fetch('/userAjax', {
 			method: 'post',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(param)
+			body: formData
 		}).then(function(res) {
 			return res.json()
 		})
