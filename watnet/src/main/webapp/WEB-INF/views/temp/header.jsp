@@ -15,14 +15,14 @@
 				<li>MY파티</li>
 			</ul>
 			<c:choose>
-				<c:when test="${sessionScope.loginUser == null}">
-					<a href="/user/login">
-						<button id="index-login-btn" type="button">로그인</button>
+				<c:when test="${sessionScope.loginUser != null || sessionScope.token != null || sessionScope.apiResult != null}">
+					<a href="/user/logout">
+						<button id="index-logout-btn" type="button">로그아웃</button>
 					</a>
 				</c:when>
 				<c:otherwise>
-					<a href="/user/logout">
-						<button id="index-logout-btn" type="button">로그아웃</button>
+					<a href="/user/login">
+						<button id="index-login-btn" type="button">로그인</button>
 					</a>
 				</c:otherwise>
 			</c:choose>

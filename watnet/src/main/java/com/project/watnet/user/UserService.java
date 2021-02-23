@@ -63,8 +63,7 @@ public class UserService {
 		String hashPw = sUtils.getHashPw(p.getUserPw(), salt);
 		p.setUserPw(hashPw);
 		
-		
-		if(p.getRecId() != null) {
+		if(!p.getRecId().equals("")) {
 			UserDomain vo = new UserDomain();
 			vo.setUserId(p.getRecId());
 			vo = mapper.selUser(vo);

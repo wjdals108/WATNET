@@ -27,9 +27,9 @@
 		</div>
 		<div class="sns-login-container">
 			<div class="sns-login-img">
-				<a href="###"> <img src="/res/img/naver-logo.png"
+				<a href="${naver_url}"> <img src="/res/img/naver-logo.png"
 					alt="naver login">
-				</a> <a href="###"> <img src="/res/img/kakao-logo.png"
+				</a> <a href="${kakao_url}"> <img src="/res/img/kakao-logo.png"
 					alt="kakao login">
 				</a>
 			</div>
