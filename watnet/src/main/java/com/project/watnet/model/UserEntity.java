@@ -7,7 +7,7 @@ public class UserEntity {
 	private String userMail;
 	private String regDt;
 	private String nickname;
-	private int pNum;
+	private String pNum;
 	private String profileImg;
 	private int userPoint;
 	
@@ -47,11 +47,11 @@ public class UserEntity {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public int getpNum() {
+	public String getpNum() {
 		return pNum;
 	}
-	public void setpNum(int pNum) {
-		this.pNum = pNum;
+	public void setpNum(String pNum) {
+		this.pNum = pNum.replace("-", "");
 	}
 	public String getProfileImg() {
 		return profileImg;

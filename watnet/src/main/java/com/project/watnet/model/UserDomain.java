@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UserDomain extends UserEntity{
 	private String recId;
 	private MultipartFile img;
+	private int modPoint;
 	
 	public MultipartFile getImg() {
 		return img;
@@ -21,4 +22,14 @@ public class UserDomain extends UserEntity{
 	public void setRecId(String recId) {
 		this.recId = recId;
 	}
+
+	public int getModPoint() {
+		return modPoint;
+	}
+
+	public void setModPoint(int modPoint) {
+		this.modPoint = modPoint;
+	}
+	
+	
 }

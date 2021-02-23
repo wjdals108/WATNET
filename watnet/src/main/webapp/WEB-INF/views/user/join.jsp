@@ -7,7 +7,9 @@
 			<ul class="id_pw-list">
 				<li><span>아이디</span> <input id="id" type="text"
 					placeholder="아이디" required>
-					<button id="idChk" type="button">중복확인</button></li>
+					<button id="idChk" type="button">중복확인</button>
+					<input type="checkbox" id="idChkCheckbox">
+				</li>
 				<li><span>비밀번호</span> <input id="pw" type="password"
 					placeholder="비밀번호" required></li>
 				<li><span>비밀번호확인</span> <input id="pwChk" type="password"
@@ -21,13 +23,29 @@
 			<ul class="join_userinfo-list">
 				<li><span>닉네임</span> <input id="nickname" type="text"
 					placeholder="닉네임" required>
-					<button id="nicknameChk" type="button">중복확인</button></li>
+					<button id="nicknameChk" type="button">중복확인</button>
+					<input type="checkbox" id="nicknameChkCheckbox">
+				</li>
 				<li><span>이메일</span> <input id="email" type="email"
 					placeholder="이메일" required></li>
 				<li><span>휴대폰 번호</span> <input id="phoneNumber" type="text"
 					placeholder="휴대폰 번호" required>
-					<button id="phoneNumberChk" type="button">휴대폰인증</button></li>
+					<button id="phoneNumberChk" type="button">휴대폰인증</button>
+					<span class="explanation">휴대폰 번호 양식은 010-XXXX-XXXX 입니다.</span>
+					<input type="checkbox" id="phoneNumberChkCheckbox">
+				</li>
 			</ul>
+			
+			<div class="modal hidden">
+				<div class="md_overlay"></div>
+				<div class="md_content">
+					<h2>인증번호를 입력하세요</h2>
+					<input type="text" class="md_input" id="certification" placeholder="인증번호를 입력하세요" required>
+					<button type="button" id="md_submit">전송</button>
+					<button type="button" id="md_close">X</button>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 	<div class="join_etc-container">

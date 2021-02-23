@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.watnet.model.UserDomain;
 import com.project.watnet.model.UserEntity;
+import com.project.watnet.model.UtilsEntity;
 
 @RequestMapping("/userAjax")
 @RestController
@@ -25,18 +26,32 @@ public class UserAjaxController {
 	
 	@PostMapping
 	public int insUser(UserDomain p) {
-		System.out.println(p.getImg());
 		MultipartFile profileImg = p.getImg();
 		return service.insUser(p, profileImg);
 	}
 	
 	@GetMapping("/chkId")
-	public int chkId(UserEntity p) {
+	public int chkId(UserDomain p) {
 		return service.chkId(p);
 	}
 	
 	@GetMapping("/chkNickname")
 	public int chkNickname(UserEntity p) {
 		return service.chkNickname(p);
+	}
+	
+	@PostMapping("/findUser")
+	public int findUser(@RequestBody UserEntity p) {
+		return service.findUser(p);
+	}
+	
+	@GetMapping("/chkPNum")
+	public int chkPNum(UserEntity p) {
+		return service.chkPNum(p);
+	}
+	
+	@GetMapping("/chkTempPw")
+	public int chkTempPw(UtilsEntity p) {
+		return service.chkTempPw(p);
 	}
 }
