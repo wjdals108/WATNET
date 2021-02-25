@@ -53,7 +53,7 @@ public class UserService {
 		hs.setAttribute(Const.KEY_LOGINUSER, vo);
 		return 1;
 	}
-
+	
 	public int insUser(UserDomain p, MultipartFile mf) {
 		if (p.getUserId() == null || p.getUserId().length() < 2 || chkId(p) == 1) {
 			return 0;
@@ -63,7 +63,7 @@ public class UserService {
 		String hashPw = sUtils.getHashPw(p.getUserPw(), salt);
 		p.setUserPw(hashPw);
 		
-		if(!p.getRecId().equals("")) {
+		if(p.getRecId() != null && !p.getRecId().equals("")) {
 			UserDomain vo = new UserDomain();
 			vo.setUserId(p.getRecId());
 			vo = mapper.selUser(vo);

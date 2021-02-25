@@ -13,15 +13,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.project.watnet.model.UserDomain;
 import com.project.watnet.sns.KakaoController;
 import com.project.watnet.sns.NaverController;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
+	
+	@Autowired
+	private UserService service;
 	
 	@Autowired
 	private NaverController NaverController;
@@ -84,6 +89,17 @@ public class UserController {
 		System.out.println("email : " + kemail);
 		System.out.println("nickname : " + kname);
 		
+		UserDomain vo = new UserDomain();
+		vo.setUserId(kid);
+		vo.setUserMail(kemail);
+		vo.setNickname(kname);
+		vo.setUserPw("kakao");
+		
+		if(service.chkId(vo) == 0) {
+			MultipartFile mf = null;
+			service.insUser(vo, mf);
+		}
+		
 		return "redirect:/index";
 	}
 	
@@ -123,6 +139,18 @@ public class UserController {
 		System.out.println("name : " + nname);
 		System.out.println("email : " + nemail);
 		System.out.println("mobile : " + nmobile);
+		
+		UserDomain vo = new UserDomain();
+		vo.setUserId(nid);
+		vo.setNickname(nname);
+		vo.setUserMail(nemail);
+		vo.setpNum(nmobile);
+		vo.setUserPw("naver");
+		
+		if(service.chkId(vo) == 0) {
+			MultipartFile mf = null;
+			service.insUser(vo, mf);
+		}
 		
 		return "redirect:/index";
 	}

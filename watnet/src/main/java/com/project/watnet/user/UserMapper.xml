@@ -7,7 +7,7 @@
  		INSERT INTO t_user
  		( userId, userPw, userMail, nickname, pNum, profileImg, userPoint )
  		VALUES
- 		( #{userId}, #{userPw}, #{userMail}, #{nickname}, #{pNum}, #{profileImg}, 1000)
+ 		( #{userId}, #{userPw}, #{userMail}, #{nickname}, #{pNum}, #{profileImg}, #{userPoint})
  	</insert>
  	
  	<insert id="insUtils">

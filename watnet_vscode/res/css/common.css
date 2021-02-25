@@ -26,10 +26,6 @@ ul>li {
     margin: 10px;
 }
 
-.hidden {
-	display: none !important;
-}
-
 .nav-container {
     display: flex;
     width: 100%;
@@ -45,8 +41,7 @@ ul>li {
     height: 40px;
 }
 
-#index-login-btn,
-#index-logout-btn {
+#index-login-btn {
     width: 90px;
     height: 32px;
     border-radius: 24px;
@@ -302,76 +297,6 @@ ul>li {
 }
 
 
-/* -------------------------------------------------------login-modal css*/
-
-#md_open {
-	cursor: pointer;
-}
-
-.modal{
-	position: fixed;
-	top: 0; left: 0;
-	width: 100%; height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items : center;
-}
-
-.md_overlay {
-	background-color: rgba(0, 0, 0, 0.6);
-	width: 100%; height: 100%;
-	position: absolute;
-}
-
-.md_content {
-	width: 400px;
-	position: relative;
-	padding: 50px 100px;
-	background-color: white;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	border-radius: 6px;
-	box-shadow: 0 10px 20px rgba(0,0,0,0.20), 0 6px 6px rgba(0, 0, 0, 0.20);
-}
-
-#md_close {
-	position: absolute;
-	top: 5px;
-	right: 5px;
-	background-color: #fff;
-	border: 0;
-	cursor: pointer;
-	font-size: 25px;
-	font-weight: bold;
-}
-
-.md_input {
-	width: 100%;
-	height: 38px;
-	margin: 5px;
-    padding: 0 15px;
-    font-size: 14px;
-    color: #333;
-    border: 1px solid #dddddd;
-    border-radius: 8px;
-}
-
-#md_find,
-#md_submit {
-	color: #fff;
-    border: solid 1px #DB202C;
-    background-color: #DB202C;
-    min-width: auto;
-    padding: 0 16px;
-    width: 100px;
-    height: 32px;
-    font-size: 14px;
-    line-height: 30px;
-    border-radius: 17px;
-    cursor: pointer;
-}
 
 
 /* ------------------------------------------join css---------------- */
@@ -448,14 +373,12 @@ ul>li {
     color: #DB202C;
     border: solid 1px #DB202C;
     cursor: pointer;
-    margin-right: 20px;
 }
 
 .join_etc-list > li > .explanation,
-.profileImg-container > .explanation,
-.join_userinfo-list > li > .explanation {
+.profileImg-container > .explanation {
     display: inline;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 300;
     color: #888888;
     line-height: 16px;
@@ -507,80 +430,8 @@ ul>li {
     background-color: #DB202C;
 }
 
-#idChkCheckbox,
-#nicknameChkCheckbox,
-#phoneNumberChkCheckbox {
-	display: none;
-}
-
 
 /* -------------------------------------------board.html css */
-.border-main-container {
-    max-width: 1280px;
-    margin: 0 auto;
-}
-
-.recVideo-container {
-    width: 100%;
-    padding: 40px 40px 0
-}
-
-.recVideo-img {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
-
-.recVideo-img > img {
-    width: 24%;
-    height: auto;
-    margin: 10px;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-/*------------------------------- board modal 창 */
-.recVideo_modal{
-	position: fixed;
-	top: 0; left: 0;
-	width: 100%; height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items : center;
-}
-
-.recVideo_md_overlay {
-	background-color: rgba(0, 0, 0, 0.6);
-	width: 100%; height: 100%;
-	position: absolute;
-}
-
-.recVideo_md_content {
-	width: 800px;
-    height: 440px;
-	position: relative;
-	background-color: #000;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	border-radius: 6px;
-	box-shadow: 0 10px 20px rgba(0,0,0,0.20), 0 6px 6px rgba(0, 0, 0, 0.20);
-}
-
-#recVideo_md_close {
-	position: absolute;
-	top: -35px;
-	right: 5px;
-	background: transparent;
-	color: #fff;
-	border: 0;
-	cursor: pointer;
-	font-size: 25px;
-	font-weight: bold;
-}
-
-
 .board-header {
     display: flex;
     justify-content: space-between;
@@ -597,21 +448,18 @@ ul>li {
 }
 
 .board-container {
-    padding: 0 40px;
+    padding: 0 20px;
     margin-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
 }
 
 .board-article {
-    width: 280px;
-    margin: 10px;
+    width: 300px;
+    margin: 20px;
     padding: 20px;
     border: solid 1px #dddddd;
     border-radius: 20px;
     background-color: #fff;
-    /* display: inline-block; */
+    display: inline-block;
 }
 
 .artilce-h2 {
@@ -678,7 +526,6 @@ ul>li {
     border: 0;
     border-radius: 4px;
 }
-
 
 
 

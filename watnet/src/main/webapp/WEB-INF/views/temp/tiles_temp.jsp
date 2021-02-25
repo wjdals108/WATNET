@@ -6,7 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>WATNET</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/res/css/common.css">
 <link rel="stylesheet" href="<tiles:getAsString name="categoryCss"/>">
 <script defer src="<tiles:getAsString name="categoryJs"/>"></script>

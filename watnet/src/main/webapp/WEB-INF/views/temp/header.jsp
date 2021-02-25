@@ -10,7 +10,7 @@
 			<ul>
 				<li><a href="/index">HOME</a></li>
 				<li>CONTENTS</li>
-				<li>NETFLIX</li>
+				<li><a href="/board/netflix">NETFLIX</a></li>
 				<li>WATCHA</li>
 				<li>MY파티</li>
 			</ul>

@@ -328,6 +328,7 @@ if (joinBtnElem) {
 		}
 		*/
 		
+		
 		var formData = new FormData()
 		formData.append("userId", userIdElem.value)
 		formData.append("userPw", userPwElem.value)
