@@ -10,4 +10,7 @@ public class BoardConroller {
 
 	@GetMapping("/netflix")
 	public void netflix() {}
+	
+	@GetMapping("/makeParty")
+	public void makeParty() {}
 }

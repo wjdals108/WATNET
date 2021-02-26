@@ -55,7 +55,7 @@ public class UserService {
 	}
 	
 	public int insUser(UserDomain p, MultipartFile mf) {
-		if (p.getUserId() == null || p.getUserId().length() < 2 || chkId(p) == 1) {
+		if (p.getUserId() == null || p.getUserId().length() < 2 || chkUser(p) == 1) {
 			return 0;
 		}
 		// 비밀번호 암호화 하는 부분
@@ -102,7 +102,7 @@ public class UserService {
 	
 	//0:휴대폰번호가 db에 없음		1:입력한 이메일과 db에 이메일이 다름		2:메일 발송 완료
 	public int findUser(UserEntity p) {
-		UserEntity vo = mapper.selPNum(p);
+		UserEntity vo = mapper.selUser(p);
 		if(vo == null) {
 			return 0;
 		}
@@ -146,18 +146,15 @@ public class UserService {
 		return 1;
 	}
 
-	public int chkId(UserDomain p) {
+	public int chkUser(UserDomain p) {
 		if (mapper.selUser(p) == null) {
 			return 0;
 		}
 		return 1;
 	}
-
-	public int chkNickname(UserEntity p) {
-		if (mapper.selNickname(p) == null) {
-			return 0;
-		}
-		return 1;
+	
+	public UserDomain selUser(UserDomain p) {
+		return mapper.selUser(p);
 	}
 
 }

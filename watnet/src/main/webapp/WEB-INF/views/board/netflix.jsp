@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <div class="border-main-container">
 	<div class="recVideo-container">
 		<h2>WATNET 추천 영상</h2>
@@ -28,7 +30,9 @@
 
 	<div class="board-header">
 		<h2>NETFLIX</h2>
-		<button id="makeParty" type="button">파티 만들기</button>
+		<c:if test="${sessionScope.loginUser != null}">
+			<a href="/board/makeParty?category=1"><button id="makePartyBtn" type="button">파티 만들기</button></a>
+		</c:if>
 	</div>
 	<div class="board-container">
 		<article class="board-article">

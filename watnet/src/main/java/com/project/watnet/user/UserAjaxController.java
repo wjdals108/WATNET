@@ -26,18 +26,14 @@ public class UserAjaxController {
 	
 	@PostMapping
 	public int insUser(UserDomain p) {
+		p.setUserCategory(1);
 		MultipartFile profileImg = p.getImg();
 		return service.insUser(p, profileImg);
 	}
 	
-	@GetMapping("/chkId")
-	public int chkId(UserDomain p) {
-		return service.chkId(p);
-	}
-	
-	@GetMapping("/chkNickname")
-	public int chkNickname(UserEntity p) {
-		return service.chkNickname(p);
+	@GetMapping("/chkUser")
+	public int chkUser(UserDomain p) {
+		return service.chkUser(p);
 	}
 	
 	@PostMapping("/findUser")

@@ -10,6 +10,7 @@ public class UserEntity {
 	private String pNum;
 	private String profileImg;
 	private int userPoint;
+	private int userCategory;
 	
 	public int getUserPk() {
 		return userPk;
@@ -65,4 +66,11 @@ public class UserEntity {
 	public void setUserPoint(int userPoint) {
 		this.userPoint = userPoint;
 	}
+	public int getUserCategory() {
+		return userCategory;
+	}
+	public void setUserCategory(int userCategory) {
+		this.userCategory = userCategory;
+	}
+	
 }

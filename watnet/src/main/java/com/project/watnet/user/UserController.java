@@ -94,11 +94,16 @@ public class UserController {
 		vo.setUserMail(kemail);
 		vo.setNickname(kname);
 		vo.setUserPw("kakao");
+		vo.setUserCategory(3);
 		
-		if(service.chkId(vo) == 0) {
+		if(service.chkUser(vo) == 0) {
 			MultipartFile mf = null;
 			service.insUser(vo, mf);
 		}
+		
+		UserDomain vo2 = service.selUser(vo);
+		
+		session.setAttribute("loginUser", vo2);
 		
 		return "redirect:/index";
 	}
@@ -112,7 +117,6 @@ public class UserController {
 		
 		// 로그인한 사용자의 모든 정보가 JSON타입으로 저장되어 있음
 		String apiResult = NaverController.getUserProfile(oauthToken);
-		session.setAttribute("apiResult", apiResult);
 		// 내가 원하는 정보 (이름)만 JSON타입에서 String타입으로 바꿔 가져오기 위한 작업
 		JSONParser parser = new JSONParser();
 		Object obj = null;
@@ -146,9 +150,14 @@ public class UserController {
 		vo.setUserMail(nemail);
 		vo.setpNum(nmobile);
 		vo.setUserPw("naver");
+		vo.setUserCategory(2);
 		
-		if(service.chkId(vo) == 0) {
+		session.setAttribute("loginUser", vo);
+
+		
+		if(service.chkUser(vo) == 0) {
 			MultipartFile mf = null;
+			System.out.println(vo.getUserCategory());
 			service.insUser(vo, mf);
 		}
 		

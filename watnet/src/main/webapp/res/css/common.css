@@ -588,12 +588,13 @@ ul>li {
     align-items: center;
 }
 
-#makeParty {
+#makePartyBtn {
     width: 100px;
     height: 30px;
     color: #DB202C;
     border: 1px solid #DB202C;
     border-radius: 17px;
+    cursor: pointer;
 }
 
 .board-container {
@@ -677,6 +678,127 @@ ul>li {
     background-color:#DB202C;
     border: 0;
     border-radius: 4px;
+}
+
+/* ---------------------makeParty css부분------------ */
+.makeParty-container {
+    border: solid 1px #bcbcbc;
+    border-radius: 20px;
+    margin: 50px 10%;
+    padding: 0 60px;
+}
+
+.makeParty-header {
+
+}
+
+.makeParty-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.makeParty-list > li {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    
+}
+
+.makeParty-list-span {
+    padding: 14px 0;
+    display: inline-block;
+    width: 120px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#service-select {
+    width: 350px;
+    height: 30px;
+    color: #888;
+    font-size: 13px;
+    border: solid 1px #ececec;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    outline: none;
+}
+
+#service-select:focus {
+    outline: none;
+    box-shadow: 0 0 3px 1px #DB202C;
+}
+
+.makeParty-input {
+    height: 30px;
+    padding: 0 10px;
+    font-size: 13px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    border: solid 1px #dddddd;
+}
+
+.makeParty-input:focus,
+#makeParty-detail-rule:focus {
+    outline: none;
+    box-shadow: 0 0 3px 1px #DB202C;
+}
+
+.width-200 {
+    width: 200px;
+}
+
+#makeParty-title-input {
+    width: 400px;
+    
+}
+
+.start-date > span,
+.progress-date > span {
+    font-size: 13px;
+    margin-right: 20px;
+}
+
+#progress-mon-input {
+    width: 45px;
+}
+
+.redColor {
+    color: #DB202C;
+}
+
+#makeParty-detail-rule {
+    width: 100%;
+    height: 200px;
+    resize: none;
+    border: 1px solid #dddddd;
+}
+
+.makeParty-btn-container {
+    margin: 60px 0;
+    text-align: center;
+}
+
+#makeParty-cancleBtn,
+#makeParty-submitBtn {
+    width: 240px;
+    height: 70px;
+    margin: 2px 0;
+    padding: 0 10px;
+    color: #fff;
+    text-align: center;
+    border: 0;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#makeParty-cancleBtn {
+    background-color: #cecdd4;
+}
+
+#makeParty-submitBtn {
+    background-color: #DB202C;
 }
 
 

@@ -5,9 +5,9 @@
  <mapper namespace="com.project.watnet.user.UserMapper">
  	<insert id="insUser" useGeneratedKeys="true" keyProperty="userPk">
  		INSERT INTO t_user
- 		( userId, userPw, userMail, nickname, pNum, profileImg, userPoint )
+ 		( userId, userPw, userMail, nickname, pNum, profileImg, userPoint, userCategory )
  		VALUES
- 		( #{userId}, #{userPw}, #{userMail}, #{nickname}, #{pNum}, #{profileImg}, #{userPoint})
+ 		( #{userId}, #{userPw}, #{userMail}, #{nickname}, #{pNum}, #{profileImg}, #{userPoint}, #{userCategory})
  	</insert>
  	
  	<insert id="insUtils">
@@ -19,17 +19,17 @@
  
  	<select id="selUser" resultType="UserDomain">
  		SELECT * FROM t_user
- 		WHERE userId = #{userId}
- 	</select>
- 	
- 	<select id="selNickname" resultType="UserEntity">
- 		SELECT * FROM t_user
- 		WHERE nickname = #{nickname}
- 	</select>
- 	
- 	<select id="selPNum" resultType="UserEntity">
- 		SELECT * FROM t_user
- 		WHERE pNum = #{pNum}
+ 		<choose>
+ 			<when test="userId != null and userId != ''">
+		 		WHERE userId = #{userId} 			
+ 			</when>
+ 			<when test="nickname != null and nickname != ''">
+		 		WHERE nickname = #{nickname} 			
+ 			</when>
+ 			<when test="pNum != null and pNum != ''">
+		 		WHERE pNum = #{pNum} 			
+ 			</when>
+ 		</choose>
  	</select>
  	
  	<select id="selUtils" resultType="UtilsEntity">
