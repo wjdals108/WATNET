@@ -3,6 +3,22 @@ function isEmail(asValue) {
 	return regExp.test(asValue); // 형식에 맞는 경우 true 리턴	
 }
 
+function getStringDay(date) {
+	let year = date.getFullYear() // 년도
+	let month = "" + (date.getMonth() + 1)  // 월
+	if(month.length < 2) {
+		month = "0" + month
+	}
+	let day = "" + date.getDate()  // 날짜
+	if(day.length < 2) {
+		day = "0" + day
+	}
+	
+	let StringDay = year + '-' + month + '-' + day
+	
+	return StringDay
+}
+
 ///////////////////////////makeParty
 var categorySelElem = document.querySelector('#service-select')
 var makePartyTitleElem = document.querySelector('#makeParty-title-input')
@@ -34,8 +50,9 @@ if(hiddenCategoryElem.value == 1) {
 if(makePartySubElem) {
 	const netflixPrice = 14500
 	
-	var now = new Date()
-	makePartyStartDtElem.value = now.toISOString().substring(0, 10)
+	var date = new Date()
+	var today = getStringDay(date)
+	makePartyStartDtElem.value = today
 	
 	function chkEndDt() {
 		if(makePartyProgressMonElem.value === '') {
@@ -50,7 +67,7 @@ if(makePartySubElem) {
 		var makePartyStartDt = new Date(strArr[0], strArr[1]-1, strArr[2])
 		
 		makePartyStartDt.setMonth(makePartyStartDt.getMonth() + progressMon)
-		var endDt = makePartyStartDt.toISOString().substring(0, 10)
+		var endDt = getStringDay(makePartyStartDt)
 		var partyPrice = netflixPrice * progressMon / 4 
 		
 		makePartyEndDtElem.innerText = endDt 
@@ -106,7 +123,7 @@ if(makePartySubElem) {
 		var makePartyStartDt = new Date(strArr[0], strArr[1]-1, strArr[2])
 		
 		makePartyStartDt.setMonth(makePartyStartDt.getMonth() + progressMon)
-		var endDt = makePartyStartDt.toISOString().substring(0, 10)
+		var endDt = getStringDay(makePartyStartDt)
 		var partyPrice = netflixPrice * progressMon / 4
 		
 		var param = {

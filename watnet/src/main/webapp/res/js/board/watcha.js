@@ -7,10 +7,10 @@ var modalElem = document.querySelector('.recVideo_modal')
 var iframeElem = modalElem.querySelector('#recVideo_iframe')
 var mdCloseElem = modalElem.querySelector('#recVideo_md_close')
 
-const rec1NetflixUrl = 'https://www.youtube.com/embed/V7WE7Fee6z8'
-const rec2NetflixUrl = 'https://www.youtube.com/embed/N2Evva6aLC8'
-const rec3NetflixUrl = 'https://www.youtube.com/embed/yXwC5Oe_5Ok'
-const rec4NetflixUrl = 'https://www.youtube.com/embed/ITH6ttdXBqk'
+const rec1WatchaUrl = 'https://www.youtube.com/embed/BoYVltlxxJM'
+const rec2WatchaUrl = 'https://www.youtube.com/embed/g5fuR8GanFI'
+const rec3WatchaUrl = 'https://www.youtube.com/embed/rApl8GrZ88E'
+const rec4WatchaUrl = 'https://www.youtube.com/embed/ME9IMbWkn1Y'
 
 function openModal(){
 	modalElem.classList.remove('hidden')
@@ -21,22 +21,22 @@ function closeModal(){
 }
 
 recVideoImg1Elem.addEventListener('click', function(){
-	iframeElem.setAttribute('src', rec1NetflixUrl)
+	iframeElem.setAttribute('src', rec1WatchaUrl)
 	openModal()
 })
 
 recVideoImg2Elem.addEventListener('click', function(){
-	iframeElem.setAttribute('src', rec2NetflixUrl)
+	iframeElem.setAttribute('src', rec2WatchaUrl)
 	openModal()
 })
 
 recVideoImg3Elem.addEventListener('click', function(){
-	iframeElem.setAttribute('src', rec3NetflixUrl)
+	iframeElem.setAttribute('src', rec3WatchaUrl)
 	openModal()
 })
 
 recVideoImg4Elem.addEventListener('click', function(){
-	iframeElem.setAttribute('src', rec4NetflixUrl)
+	iframeElem.setAttribute('src', rec4WatchaUrl)
 	openModal()
 })
 
@@ -69,8 +69,14 @@ var moreSelectElem = document.querySelector('#moreSelect')
 selBoardList()
 
 function selBoardList() {
+	if(maxPage.value === '0') {
+		maxPage.value = '1'
+	}
+	if(currentPage.value === maxPage.value) {
+		moreSelectElem.classList.add('hidden')
+	}
 	
-	fetch(`/boardAjax?category=1&page=${currentPageElem.value}`)
+	fetch(`/boardAjax?category=2&page=${currentPageElem.value}`)
 	.then(function(res) {
 		return res.json()
 	}).then(function(myJson) {
@@ -97,7 +103,7 @@ function makeArticle(item) {
 	if(item.recruitNum == 2) {
 		article.innerHTML =
 		`
-		<h2 class="article-h2">넷플릭스 프리미엄</h2>
+		<h2 class="article-h2">왓챠 프리미엄</h2>
 		<span class="party-name">${item.title}</span>
 		<div class="article-img">
 			<img class="user1-profileImg" src="/res/img/profileImg.png" alt="profile image">
@@ -115,7 +121,7 @@ function makeArticle(item) {
 	} else if(item.recruitNum == 3) {
 		article.innerHTML =
 		`
-		<h2 class="article-h2">넷플릭스 프리미엄</h2>
+		<h2 class="article-h2">왓챠 프리미엄</h2>
 		<span class="party-name">${item.title}</span>
 		<div class="article-img">
 			<img class="user1-profileImg" src="/res/img/profileImg.png" alt="profile image">
@@ -133,7 +139,7 @@ function makeArticle(item) {
 	} else {
 		article.innerHTML =
 		`
-		<h2 class="article-h2">넷플릭스 프리미엄</h2>
+		<h2 class="article-h2">왓챠 프리미엄</h2>
 		<span class="party-name">${item.title}</span>
 		<div class="article-img">
 			<img class="user1-profileImg" src="/res/img/profileImg.png" alt="profile image">
@@ -153,34 +159,6 @@ function makeArticle(item) {
 	boardElem.append(article)
 }
 
-
-//인피니티 스크롤 구현
-function getDocumentHeight() {
-    const body = document.body;
-    const html = document.documentElement;
-    
-    return Math.max(
-        body.scrollHeight, body.offsetHeight,
-        html.clientHeight, html.scrollHeight, html.offsetHeight
-    )
-}
-
-
-function getScrollTop() {
-    return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
-}
-
-window.onscroll = function() {
-    if (getScrollTop() < getDocumentHeight() - window.innerHeight) {
-		return;
-	}
-	let nextPage = parseInt(currentPageElem.value) + 1
-	currentPageElem.value = nextPage
-	
-	setTimeout(selBoardList, 500)
-}
-
-/*
 function moreSelect() {
 	let nextPage = parseInt(currentPageElem.value) + 1
 	currentPageElem.value = nextPage
@@ -189,11 +167,3 @@ function moreSelect() {
 }
 
 moreSelectElem.addEventListener('click', moreSelect)
-*/
-	
-	
-
-
-
-
-

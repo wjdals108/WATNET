@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="border-main-container">
+	<button id="goUp" type="button" onclick="up()"></button>
+
 	<div class="recVideo-container">
 		<h2>WATNET 추천 영상</h2>
 		<div class="recVideo-img">
@@ -35,27 +37,10 @@
 		</c:if>
 	</div>
 	<div class="board-container">
-		<article class="board-article">
-			<h2 class="artilce-h2">넷플릭스 프리미엄</h2>
-			<span class="party-name">여기에 파티 이름</span>
-			<div class="article-img">
-				<img class="user1-profileImg" src="/res/img/profileImg.png"
-					alt="profile image"> <img class="user2-profileImg"
-					src="/res/img/default-profileImg.png" alt="profile image"> <img
-					class="user3-profileImg" src="/res/img/default-profileImg.png"
-					alt="profile image"> <img class="user4-profileImg"
-					src="/res/img/default-profileImg.png" alt="profile image">
-			</div>
-			<div class="article-footer">
-				<div class="party-date">
-					<span>21.03.09부터(##일 남음)</span> <span>21.09.28까지(##일)</span>
-				</div>
-				<span class="pay-point"><span class="price">13,590</span>원</span>
-			</div>
-		</article>
 
 	</div>
 	<div class="board-footer">
-		<button id="moreSelect" type="button">더 보기</button>
+		<input id="currentPage" type="hidden" value="1">
+		<input id="maxPage" type="hidden" value="${maxPageNum}">
 	</div>
 </div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="makeParty-container">
 	<div class="makeParty-header">
 		<h1>파티 등록</h1>
@@ -7,11 +8,18 @@
 	</div>
 	<input id="makeParty-category-hidden" type="hidden" value="${param.category}">
 	<ul class="makeParty-list">
-		<li><span class="makeParty-list-span">서비스</span> <select
-			id="service-select">
-				<option id="option1" value="1">넷플릭스</option>
+		<li><span class="makeParty-list-span">서비스</span>
+		<select	id="service-select">
+			<c:if test="${param.category == 1}">
+				<option id="option1" value="1" selected>넷플릭스</option>
 				<option id="option2" value="2">왓챠</option>
-		</select></li>
+			</c:if>
+			<c:if test="${param.category == 2}">
+				<option id="option1" value="1">넷플릭스</option>
+				<option id="option2" value="2" selected>왓챠</option>
+			</c:if>
+		</select>
+		</li>
 		<li><span class="makeParty-list-span">제목</span> <input
 			id="makeParty-title-input" class="makeParty-input" type="text"
 			placeholder="제목을 입력해 주세요"></li>

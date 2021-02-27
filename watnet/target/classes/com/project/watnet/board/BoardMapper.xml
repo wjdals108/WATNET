@@ -11,4 +11,20 @@
  		(#{category}, #{title}, #{shareId}, #{sharePw}, #{leaderpNum}, #{startDt}, #{endDt}, #{price}, #{ctnt})
  	</insert>
  	
+ 	<select id="selBoardList" resultType="BoardEntity">
+ 		SELECT * FROM t_board
+ 		WHERE category = #{category}
+ 		AND recruitNum <![CDATA[ < ]]> 4 
+ 		AND isDel = 0
+ 		ORDER BY startDt
+ 		LIMIT #{sIdx}, #{rowCnt}
+ 	</select>
+ 	
+ 	<select id="selMaxPageNum" resultType="int">
+ 		SELECT CEIL(COUNT(boardPk) / #{rowCnt})
+		FROM t_board
+		WHERE category = #{category}
+		AND isDel = 0
+ 	</select>
+ 	
  </mapper>
