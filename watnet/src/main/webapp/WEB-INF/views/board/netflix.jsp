@@ -33,7 +33,8 @@
 	<div class="board-header">
 		<h2>NETFLIX</h2>
 		<c:if test="${sessionScope.loginUser != null}">
-			<a href="/board/makeParty?category=1"><button id="makePartyBtn" type="button">파티 만들기</button></a>
+			<input id="loginUserPNum" type="hidden" value="${sessionScope.loginUser.pNum}">
+			<button id="makePartyBtn" type="button">파티 만들기</button>
 		</c:if>
 	</div>
 	<div class="board-container">

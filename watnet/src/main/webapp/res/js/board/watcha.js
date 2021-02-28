@@ -45,6 +45,21 @@ mdCloseElem.addEventListener('click', function() {
 	closeModal()
 })
 
+var makePartyElem = document.querySelector('#makePartyBtn')
+var loginUserElem = document.querySelector('#loginUserPNum')
+if(makePartyElem) {
+	function makeParty() {
+		if(loginUserElem.value == null || loginUserElem.value === '') {
+			alert('고객님의 프로필에 휴대폰 정보가 없습니다. 휴대폰 번호를 등록해주세요.')
+			//location.href = '프로필 편집'
+			return;
+		}
+		location.href = '/board/makeParty?category=2'
+	}
+	
+	makePartyElem.addEventListener('click', makeParty)
+}
+
 function getStringDay(date) {
 	let year = date.getFullYear() // 년도
 	let month = "" + (date.getMonth() + 1)  // 월
