@@ -137,7 +137,7 @@ if (joinBtnElem) {
 			}
 		})
 	}
-	pNumChkElem.addEventListener('click', pNumChk)
+	//pNumChkElem.addEventListener('click', pNumChk)
 	
 	function chkTempPw() {
 		if (mdCertificationElem.value === '') {
@@ -216,8 +216,7 @@ if (joinBtnElem) {
 			alert('휴대폰 인증을 해주세요')
 			pNumElem.focus()
 			return
-		}
-		*/
+		}*/
 		
 		
 		var formData = new FormData()

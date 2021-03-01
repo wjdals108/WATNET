@@ -31,4 +31,7 @@ public class BoardConroller {
 	
 	@GetMapping("/makeParty")
 	public void makeParty() {}
+	
+	@GetMapping("/detail")
+	public void detail() {}
 }

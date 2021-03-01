@@ -4,11 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.project.watnet.board.BoardMapper">
  	
- 	<insert id="insBoard">
+ 	<insert id="insBoard" useGeneratedKeys="true" keyProperty="boardPk">
  		INSERT INTO t_board
  		(category, title, shareId, sharePw, leaderpNum, startDt, endDt, price, ctnt)
  		VALUES
  		(#{category}, #{title}, #{shareId}, #{sharePw}, #{leaderpNum}, #{startDt}, #{endDt}, #{price}, #{ctnt})
+ 	</insert>
+ 	
+ 	<insert id="insParty">
+ 		INSERT INTO t_partyuser
+ 		(boardPk, userPk)
+ 		VALUES
+ 		(#{boardPk}, #{userPk})
  	</insert>
  	
  	<select id="selBoardList" resultType="BoardEntity">
@@ -26,5 +33,28 @@
 		WHERE category = #{category}
 		AND isDel = 0
  	</select>
+ 	
+ 	<select id="selParty" resultType="PartyUserEntity">
+ 		SELECT * FROM t_partyuser
+ 		<choose>
+ 			<when test="boardPk != null and boardPk != ''">
+ 				WHERE boardPk = #{boardPk}
+ 			</when>
+ 			<when test="userPk != null and userPk != ''">
+ 				WHERE userPk = #{userPk}
+ 			</when>
+ 		</choose>
+ 	</select>
+ 	
+ 	<select id="selBoard" resultType="BoardDomain">
+ 		SELECT * FROM t_board
+ 		WHERE boardPk = #{boardPk}
+ 	</select>
+ 	
+ 	<update id="updBoard">
+ 		UPDATE t_board
+ 		SET recruitNum = recruitNum + 1
+ 		WHERE boardPk = #{boardPk}
+ 	</update>
  	
  </mapper>

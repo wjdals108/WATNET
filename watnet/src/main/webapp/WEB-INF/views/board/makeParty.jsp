@@ -7,6 +7,7 @@
 		<hr>
 	</div>
 	<input id="makeParty-category-hidden" type="hidden" value="${param.category}">
+	<input id="loginUserPk" type="hidden" value="${sessionScope.loginUser.userPk}">
 	<ul class="makeParty-list">
 		<li><span class="makeParty-list-span">서비스</span>
 		<select	id="service-select">

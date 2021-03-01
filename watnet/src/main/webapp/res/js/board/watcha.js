@@ -68,7 +68,7 @@ function getStringDay(date) {
 	}
 	let day = "" + date.getDate()  // 날짜
 	if(day.length < 2) {
-		day = "0" + date
+		day = "0" + day
 	}
 	
 	let StringDay = year + '-' + month + '-' + day

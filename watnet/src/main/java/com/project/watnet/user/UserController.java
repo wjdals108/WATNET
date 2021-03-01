@@ -102,7 +102,6 @@ public class UserController {
 		}
 		
 		UserDomain vo2 = service.selUser(vo);
-		
 		session.setAttribute("loginUser", vo2);
 		
 		return "redirect:/index";
@@ -152,14 +151,14 @@ public class UserController {
 		vo.setUserPw("naver");
 		vo.setUserCategory(2);
 		
-		session.setAttribute("loginUser", vo);
-
-		
 		if(service.chkUser(vo) == 0) {
 			MultipartFile mf = null;
 			System.out.println(vo.getUserCategory());
 			service.insUser(vo, mf);
 		}
+
+		UserDomain vo2 = service.selUser(vo);
+		session.setAttribute("loginUser", vo2);
 		
 		return "redirect:/index";
 	}

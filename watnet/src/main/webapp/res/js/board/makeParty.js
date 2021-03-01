@@ -37,6 +37,7 @@ var makePartySubElem = document.querySelector('#makeParty-submitBtn')
 
 ////////////////카테고리에 맞춰서 selected
 var hiddenCategoryElem = document.querySelector('#makeParty-category-hidden')
+var hiddenUserPkElem = document.querySelector('#loginUserPk')
 var option1Elem = categorySelElem.querySelector('#option1')
 var option2Elem = categorySelElem.querySelector('#option2')
 
@@ -49,6 +50,7 @@ if(hiddenCategoryElem.value == 1) {
 //////////makeParty
 if(makePartySubElem) {
 	const netflixPrice = 14500
+	const watchaPrice = 12900
 	
 	var date = new Date()
 	var today = getStringDay(date)
@@ -68,9 +70,13 @@ if(makePartySubElem) {
 		
 		makePartyStartDt.setMonth(makePartyStartDt.getMonth() + progressMon)
 		var endDt = getStringDay(makePartyStartDt)
-		var partyPrice = netflixPrice * progressMon / 4 
+		if(hiddenCategoryElem.value == 1){
+			let partyPrice = netflixPrice * progressMon / 4 			
+		} else if(hiddenCategoryElem.value == 2) {
+			let partyPrice = watchaPrice * progressMon / 4
+		}
 		
-		makePartyEndDtElem.innerText = endDt 
+		makePartyEndDtElem.innerText = endDt
 		makePartyPriceElem.innerText = numberWithCommas(partyPrice) + ' 원'
 		
 		chkEndDtChkboxElem.checked = true
@@ -136,6 +142,7 @@ if(makePartySubElem) {
 			endDt: endDt,
 			price: partyPrice,
 			ctnt: makePartyCtntElem.value,
+			userPk: hiddenUserPkElem.value,
 		}
 		
 		fetch(`/boardAjax`, {
@@ -150,6 +157,9 @@ if(makePartySubElem) {
 			if(myJson === 1) {
 				alert('글 등록 완료')
 				location.href = "/board/netflix"
+				return
+			} else if(myJson === -1) {
+				alert('이미 등록하신 글이 있습니다.')
 				return
 			} else if(myJson === 2) {
 				alert('글 등록 완료')
