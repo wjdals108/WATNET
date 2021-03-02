@@ -992,10 +992,218 @@ ul>li {
     background-color: #DB202C;
 }
 
+/* -------------------------------- myParty css */
+.myParty-main-container {
+    position: relative;
+}
+
+.myParty-background {
+    width: 100%;
+    height: 500px;
+    background-image: url(/res/img/myparty-background.svg);
+    background-size: cover;
+}
+
+.myParty-container {
+    width: 90%;
+    max-width: 1280px;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.myParty-info {
+    padding: 60px;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 3px 3px 3px gray;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.myParty-title-span {
+	display: flex;
+    flex-direction: column;
+}
+
+.myParty-category {
+    font-size: 24px;
+    font-weight: bold;
+    color: #bcbcbc;
+    margin-bottom: 15px;
+}
+
+.myParty-info-span {
+    font-size: 40px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 30px;
+}
+
+.myParty-user-container {
+    display: flex;
+    height: 200px;
+}
+
+.myParty-user {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.myParty-user > img {
+    width: 80%;
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 16px;
+}
+
+.myParty-user > span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #666666;
+}
+
+#chkShareInfo {
+    width: 100%;
+    height: 70px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    border: 0;
+    border-radius: 12px;
+    background-color: rgb(17, 199, 143);
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.myParty-btn {
+    display: flex;
+    height: 70px;
+}
+
+#openPostBtn {
+    flex-grow: 1;
+    font-size: 24px;
+    font-weight: bold;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-right: 0;
+    border: 1px solid #dddddd;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#quitPartyBtn {
+    flex-grow: 1;
+    font-size: 24px;
+    font-weight: bold;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border: 1px solid #dddddd;
+    background-color: #fff;
+    cursor: pointer;
+}
 
 
 
 
+
+
+
+
+
+.modal{
+	position: fixed;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items : center;
+}
+
+.md_overlay {
+	background-color: rgba(0, 0, 0, 0.6);
+	width: 100%; height: 100%;
+	position: absolute;
+}
+
+.shareInfo_md_content {
+	width: 400px;
+	position: relative;
+	padding: 20px 50px;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 12px;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.20), 0 6px 6px rgba(0, 0, 0, 0.20);
+}
+
+.shareInfo-title {
+	width: 100%;
+	height: 50px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #666666;
+	border-bottom: 1px solid #dddddd;
+	text-align: center;
+}
+
+.shareInfo-info-div {
+	width: 100%;
+	padding: 20px 0;
+	display: flex;
+	flex-direction: column;
+	border-bottom: 1px solid #dddddd;
+	margin-bottom: 10px;
+}
+
+.shareInfo-data {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.shareInfo-span {
+	width: 50px;
+	font-size: 16px;
+	color: #bcbcbc;
+}
+
+.shareInfo-ID,
+.shareInfo-PW {
+	flex-grow: 1;
+	font-size: 18px;
+	font-weight: bold;
+	color: #666666;
+}
+
+.shareInfo-data > button {
+	width: 50px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #666666;
+	background-color: #fff;
+	border-radius: 20px;
+	border: 1px solid #bcbcbc;
+	cursor: pointer;
+}
+
+#shareInfo_md_close {
+	border: 0;
+	font-size: 20px;
+	font-weight: bold;
+	width: 100%;
+	background-color: #fff;
+	color: #bcbcbc;
+	cursor: pointer;
+}
 
 
 /* PC , 테블릿 가로 (해상도 768px ~ 1023px)*/

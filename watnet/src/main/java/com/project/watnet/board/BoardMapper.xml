@@ -47,8 +47,20 @@
  	</select>
  	
  	<select id="selBoard" resultType="BoardDomain">
- 		SELECT * FROM t_board
- 		WHERE boardPk = #{boardPk}
+ 		SELECT A.*, B.nm
+ 		FROM t_board A
+ 		INNER JOIN t_board_manage B
+ 		ON A.category = B.category
+ 		WHERE A.boardPk = #{boardPk}
+ 	</select>
+ 	
+ 	<select id="selUserProfile" resultType="UserEntity">
+ 		SELECT A.*, B.userPk, B.nickname, B.profileImg
+ 		FROM t_partyuser A
+ 		INNER JOIN t_user B
+ 		ON A.userPk = B.userPk
+ 		WHERE A.boardPk = #{boardPk}
+ 		
  	</select>
  	
  	<update id="updBoard">

@@ -13,6 +13,7 @@ import com.project.watnet.model.BoardDTO;
 import com.project.watnet.model.BoardDomain;
 import com.project.watnet.model.BoardEntity;
 import com.project.watnet.model.PartyUserEntity;
+import com.project.watnet.model.UserEntity;
 
 @RequestMapping("/boardAjax")
 @RestController
@@ -37,8 +38,18 @@ public class BoardAjaxController {
 		return service.selBoardList(p);
 	}
 	
+	@GetMapping("/selMyParty")
+	public BoardDomain selMyParty(PartyUserEntity p) {
+		return service.selMyParty(p);
+	}
+	
 	@GetMapping("/selBoard")
 	public BoardEntity selBoard(BoardEntity p) {
 		return service.selBoard(p);
+	}
+	
+	@GetMapping("/selUserProfile")
+	public List<UserEntity> selUserProfile(PartyUserEntity p) {
+		return service.selUserProfile(p);
 	}
 }

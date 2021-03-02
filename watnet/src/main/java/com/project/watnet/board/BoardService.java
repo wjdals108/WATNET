@@ -9,6 +9,7 @@ import com.project.watnet.model.BoardDTO;
 import com.project.watnet.model.BoardDomain;
 import com.project.watnet.model.BoardEntity;
 import com.project.watnet.model.PartyUserEntity;
+import com.project.watnet.model.UserEntity;
 
 @Service
 public class BoardService {
@@ -56,11 +57,22 @@ public class BoardService {
 		return mapper.selBoardList(p);
 	}
 	
-	public BoardEntity selBoard(BoardEntity p) {
+	public BoardDomain selBoard(BoardEntity p) {
 		return mapper.selBoard(p);
+	}
+	
+	public List<UserEntity> selUserProfile(PartyUserEntity p) {
+		return mapper.selUserProfile(p);
 	}
 	
 	public int selMaxPageNum(BoardDTO p) {
 		return mapper.selMaxPageNum(p);
+	}
+	
+	public BoardDomain selMyParty(PartyUserEntity p) {
+		PartyUserEntity vo = mapper.selParty(p);
+		BoardDomain vo2 = new BoardDomain();
+		vo2.setBoardPk(vo.getBoardPk());
+		return mapper.selBoard(vo2);
 	}
 }

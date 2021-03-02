@@ -15,7 +15,7 @@
 				<c:forEach items="${menuList}" var="menu">
 				<li><a href="/board/${fn:toLowerCase(menu.nm)}">${menu.nm}</a></li>
 				</c:forEach>
-				<li>MY파티</li>
+				<li><a href="/user/myParty?userPk=${sessionScope.loginUser.userPk}">MY파티</a></li>
 			</ul>
 			<c:choose>
 				<c:when test="${sessionScope.loginUser != null}">

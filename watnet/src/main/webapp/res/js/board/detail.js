@@ -14,6 +14,7 @@ var detailCancleBtn = document.querySelector('#detail-cancleBtn')
 var detailSubBtnElem = document.querySelector('#detail-submitBtn')
 
 selBoard()
+selUserProfile()
 
 function selBoard() {
 	fetch(`/boardAjax/selBoard?boardPk=${hiddenBoardPkElem.value}`)
@@ -22,6 +23,42 @@ function selBoard() {
 	}).then(function(myJson) {
 		makeDetail(myJson)
 	})
+}
+
+function selUserProfile() {
+	fetch(`/boardAjax/selUserProfile?boardPk=${hiddenBoardPkElem.value}`)
+	.then(function(res) {
+		return res.json()
+	}).then(function(myJson) {
+		myJson.forEach(function(item) {
+			makeUser(item)
+		})
+		for(var i=1; i<=(4-myJson.length); i++) {
+			makeNoneUser()
+		}
+	})
+}
+
+function makeUser(myJson) {
+	var userContainerElem = document.createElement('div')
+	userContainerElem.classList.add('user-container')
+	userContainerElem.innerHTML = 
+	`
+	<img src="/res/img/user/${myJson.userPk}/${myJson.profileImg}" alt="profile image" onerror="this.src='/res/img/profileImg.png'">
+    <span>${myJson.nickname}</span>
+	`
+	detailUserElem.append(userContainerElem)
+}
+
+function makeNoneUser() {
+	var userContainerElem = document.createElement('div')
+	userContainerElem.classList.add('user-container')
+	userContainerElem.innerHTML = 
+	`
+	<img src="/res/img/default-profileImg.png" alt="profile image">
+    <span>모집대기중</span>
+	`
+	detailUserElem.append(userContainerElem)
 }
 
 function makeDetail(item) {
@@ -105,26 +142,6 @@ function makeDetail(item) {
 	`
 	<span id="endDt-span">종료일 : ${item.endDt} (${leftLastDays})일</span>
     <span>참여 비용 : <span class="redSpan"> ${numberWithCommas(item.price)}</span> 원</span>
-	`
-	
-	detailUserElem.innerHTML =
-	`
-	<div class="user-container">
-        <img src="/res/img/profileImg.png" alt="leader profile image">
-        <span>user 닉네임</span>
-    </div>
-    <div class="user-container">
-        <img src="/res/img/default-profileImg.png" alt="first user profile image">
-        <span>모집대기중</span>
-    </div>
-    <div class="user-container">
-        <img src="/res/img/default-profileImg.png" alt="first user profile image">
-        <span>모집대기중</span>
-    </div>
-    <div class="user-container">
-        <img src="/res/img/default-profileImg.png" alt="first user profile image">
-        <span>모집대기중</span>
-    </div>
 	`
 	
 	detailTextElem.innerHTML = 

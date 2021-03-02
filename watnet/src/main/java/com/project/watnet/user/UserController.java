@@ -54,6 +54,11 @@ public class UserController {
 	@GetMapping("/join")
 	public void join() {}
 	
+	@GetMapping("/myParty")
+	public void myParty() {}
+
+	
+	
 	@RequestMapping(value = "/kakaologin", produces = "application/json", method = { RequestMethod.GET, RequestMethod.POST })
 	public String kakaoLogin(@RequestParam("code") String code, HttpSession session) throws Exception {
 		// 결과값을 node에 담아줌

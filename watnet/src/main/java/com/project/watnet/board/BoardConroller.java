@@ -34,4 +34,5 @@ public class BoardConroller {
 	
 	@GetMapping("/detail")
 	public void detail() {}
+
 }
