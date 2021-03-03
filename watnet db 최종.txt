@@ -1,7 +1,3 @@
-watnet
-db
-최종
-
 CREATE TABLE t_user (
 	userPk INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	userId VARCHAR(20) NOT NULL UNIQUE,
@@ -11,11 +7,64 @@ CREATE TABLE t_user (
 	nickname VARCHAR(20) NOT NULL,
 	pNum VARCHAR(13),
 	profileImg VARCHAR(70),
-	userPoint INT UNSIGNED DEFAULT 0
+	userPoint INT UNSIGNED DEFAULT 0,
+	userPaidPoint INT UNSIGNED DEFAULT 0,
+	userCategory INT(1) CHECK(userCategory IN (1, 2, 3)),
+	UNIQUE(pNum, userCategory)
 );
 
 CREATE TABLE t_utils(
 	utilPk INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	pNum VARCHAR(13) NOT NULL,
 	tempPw CHAR(6) NOT NULL
+);
+
+DROP TABLE t_user;
+
+CREATE TABLE t_board_manage(
+	category INT UNSIGNED AUTO_INCREMENT,
+	nm VARCHAR(20) NOT NULL,
+	orderby INT UNSIGNED DEFAULT 0,
+	PRIMARY KEY(category)
+);
+
+INSERT INTO t_board_manage
+(category, nm)
+VALUES
+(1, 'NETFLIX'), (2, 'WATCHA');
+
+CREATE TABLE t_board(
+	boardPk INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	category INT UNSIGNED NOT NULL,
+	title VARCHAR(50) NOT NULL,
+	shareId VARCHAR(20) NOT NULL,
+	sharePw VARCHAR(20) NOT NULL,
+	leaderpNum VARCHAR(13) NOT NULL,
+	startDt DATE NOT NULL,
+	endDt DATE NOT NULL,
+	price INT UNSIGNED NOT NULL,
+	ctnt VARCHAR(2000),
+	recruitNum INT(1) UNSIGNED DEFAULT 1 CHECK(recruitNum IN (1, 2, 3, 4)),
+	isDel INT(1) UNSIGNED DEFAULT 0 CHECK(isDel IN(0, 1)),
+	FOREIGN KEY (category) REFERENCES t_board_manage(category),
+	FOREIGN KEY (leaderpNum) REFERENCES t_user(pNum)
+);
+
+CREATE TABLE t_partyUser(
+	boardPk INT UNSIGNED NOT NULL,
+	userPk INT UNSIGNED NOT NULL,
+	PRIMARY KEY(boardPk, userPk),
+	FOREIGN KEY (boardPk) REFERENCES t_board(boardPk),
+	FOREIGN KEY (userPk) REFERENCES t_user(userPk)
+);
+
+CREATE TABLE t_post(
+	postPk INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	boardPk INT UNSIGNED NOT NULL,
+	sendUserPk INT UNSIGNED NOT NULL,
+	ctnt VARCHAR(200) NOT NULL,
+	regDt DATETIME DEFAULT NOW(),
+	isDel INT(1) UNSIGNED DEFAULT 0 CHECK(isDel IN(0, 1)),
+	FOREIGN KEY (boardPk) REFERENCES t_board (boardPk),
+	FOREIGN KEY (sendUserPk) REFERENCES t_user (userPk)
 );
