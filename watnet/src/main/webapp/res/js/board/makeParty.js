@@ -137,6 +137,7 @@ if(makePartySubElem) {
 			title: makePartyTitleElem.value,
 			shareId: makePartyShareIdElem.value,
 			sharePw: makePartySharePwElem.value,
+			leaderPk: hiddenUserPkElem.value,
 			leaderpNum: makePartyPNumElem.value,
 			startDt: makePartyStartDtElem.value,
 			endDt: endDt,
@@ -159,7 +160,7 @@ if(makePartySubElem) {
 				location.href = "/board/netflix"
 				return
 			} else if(myJson === -1) {
-				alert('이미 등록하신 글이 있습니다.')
+				alert('이미 등록 된 파티가 있습니다.')
 				return
 			} else if(myJson === 2) {
 				alert('글 등록 완료')

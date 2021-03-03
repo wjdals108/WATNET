@@ -28,7 +28,12 @@ function makeNullParty() {
 	`
 }
 
-function openShareInfoModal() {
+function openShareInfoModal(startDt) {
+	console.log(startDt)
+	
+	
+	
+	
 	shareInfoModalElem.classList.remove('hidden')
 }
 
@@ -140,25 +145,49 @@ function makeMyParty(item) {
 	
 	myPartyBtnElem.innerHTML = 
 	`
-	<button id="chkShareInfo" onclick="openShareInfoModal()" type="button">공유 ID/PW 확인</button>
+	<button id="chkShareInfo" onclick="openShareInfoModal('${item.startDt}')" type="button">공유 ID/PW 확인</button>
     <div class="myParty-btn">
         <button id="openPostBtn" type="button" onclick="openPostModal()">쪽지보내기</button>
-        <button id="quitPartyBtn" type="button">파티 탈퇴</button>
+        <button id="quitPartyBtn" onclick="quitParty()" type="button">파티 탈퇴</button>
     </div>
 	`
 }
+
+//파티탈퇴 부분
+function quitParty() {
+	if(confirm('정말 Party를 탈퇴하시겠습니까?') == true) {
+		fetch(`/boardAjax?userPk=${hiddenUserPkElem.value}`, {
+			method: 'delete'
+		}).then(function(res) {
+			return res.json()
+		}).then(function(myJson) {
+			console.log(myJson)
+			if(myJson == 1) {
+				alert('파티 탈퇴가 완료되었습니다.')
+				location.reload()
+			} else {
+				alert('실패')
+				return
+			}
+		})
+	} else {
+		return
+	}
+}
+
 
 //post 부분
 var postModalElem = document.querySelector('#postModal')
 var viewPostElem = document.querySelector('.view-post')
 
-viewPostElem.scrollTop = viewPostElem.scrollHeight
+var postWriteElem = document.querySelector('#post-write')
 
-var postSubBtn = document.querySelector('#post-submitBtn')
+var postSubBtnElem = document.querySelector('#post-submitBtn')
 var closePostModalBtn = document.querySelector('#closePostModalBtn')
 
 function openPostModal() {
 	postModalElem.classList.remove('hidden')
+	scrollDown(viewPostElem)
 }
 
 function closePostModal() {
@@ -167,10 +196,18 @@ function closePostModal() {
 
 closePostModalBtn.addEventListener('click', closePostModal)
 
+selPost()
+
 function selPost() {
-	fetch(``)
-	
-	
+	fetch(`/postAjax?userPk=${hiddenUserPkElem.value}`)
+	.then(function(res) {
+		return res.json()
+	}).then(function(myJson) {
+		viewPostElem.innerHTML = ''
+		myJson.forEach(function(item) {
+			makePost(item)
+		})
+	})
 }
 
 function makePost(item) {
@@ -181,7 +218,7 @@ function makePost(item) {
 	}
 	post.innerHTML = 
 	`
-	<img class="post-profileImg" src="/res/img/user/${item.sendUserPk}/${item.profileImg}" alt="user profile image">
+	<img class="post-profileImg" src="/res/img/user/${item.sendUserPk}/${item.profileImg}" alt="user profile image" onerror="this.src='/res/img/profileImg.png'">
 	<div class="post-username_ctnt">
 	    <span class="post-userNickname">${item.nickname}</span>
 	    <p class="post-ctnt">${item.ctnt}</p>
@@ -189,8 +226,43 @@ function makePost(item) {
 	<span class="post-dt">${item.regDt}</span>
 	`
 	viewPostElem.append(post)
+	scrollDown(viewPostElem)
 }
 
+function scrollDown(Elem) {
+	Elem.scrollTop = Elem.scrollHeight
+}
+
+//post 작성
+function insPost() {
+	
+	if(postWriteElem.value === '') {
+		alert('POST 내용을 입력하세요')
+		postWriteElem.focus()
+		return
+	}
+	
+	var param = {
+		sendUserPk: hiddenUserPkElem.value,
+		ctnt: postWriteElem.value,
+	}
+	
+	fetch(`/postAjax`, {
+		method: 'post',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(param)
+	}).then(function(res) {
+		return res.json()
+	}).then(function(myJson) {
+		if(myJson == 1) {
+			selPost()
+			postWriteElem.value = ''
+		}
+	})
+}
+postSubBtnElem.addEventListener('click', insPost)
 
 
 

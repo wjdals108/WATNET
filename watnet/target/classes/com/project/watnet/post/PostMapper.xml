@@ -3,8 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.project.watnet.post.PostMapper">
- 		<select id="selPost" resultType="PostEntity">
- 			SELECT A.*, B.profileImg, B.nickname
+ 		<insert id="insPost">
+ 			INSERT INTO t_post
+ 			(boardPk, sendUserPk, ctnt)
+ 			VALUES
+ 			(#{boardPk}, #{sendUserPk}, #{ctnt})
+ 		</insert>
+ 		
+ 		<select id="selPost" resultType="PostDomain">
+ 			SELECT A.sendUserPk, A.ctnt, B.profileImg, B.nickname,
+ 			DATE_FORMAT(A.regDt, '%p %I:%i') as regDt
  			FROM t_post A
  			INNER JOIN t_user B
  			ON A.sendUserPk = B.userPk

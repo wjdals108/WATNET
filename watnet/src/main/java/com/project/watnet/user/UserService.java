@@ -14,6 +14,7 @@ import com.project.watnet.FileUtils;
 import com.project.watnet.MailUtils;
 import com.project.watnet.SecurityUtils;
 import com.project.watnet.SmsUtils;
+import com.project.watnet.model.PartyUserEntity;
 import com.project.watnet.model.UserDomain;
 import com.project.watnet.model.UserEntity;
 import com.project.watnet.model.UtilsEntity;

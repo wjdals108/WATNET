@@ -14,10 +14,15 @@ import com.project.watnet.model.UserEntity;
 public interface BoardMapper {
 	int insBoard(BoardEntity p);
 	int selMaxPageNum(BoardDTO p);
+	int makeParty(PartyUserEntity p);
 	int insParty(PartyUserEntity p);
 	List<BoardEntity> selBoardList(BoardDTO p);
 	PartyUserEntity selParty(PartyUserEntity p);
 	BoardDomain selBoard(BoardEntity p);
 	List<UserEntity> selUserProfile(PartyUserEntity p);
-	int updBoard(PartyUserEntity p);
+	int updPlusRecruitNum(PartyUserEntity p);
+	int updMinusRecruitNum(PartyUserEntity p);
+	int quitParty(PartyUserEntity p);
+	int delBoard(PartyUserEntity p);
+	int delPost(PartyUserEntity p);
 }

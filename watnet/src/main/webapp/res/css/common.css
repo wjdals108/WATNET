@@ -1227,7 +1227,6 @@ ul>li {
 }
 
 .view-post {
-    
     height: 600px;
     overflow: auto;
     -ms-overflow-style: none;
@@ -1249,6 +1248,7 @@ ul>li {
     height: 40px;
     margin-right: 10px;
     margin-top: 10px;
+    border-radius: 50%;
 }
 
 .post-userNickname {

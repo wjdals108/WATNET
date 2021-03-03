@@ -112,7 +112,7 @@ function makeDetail(item) {
 	`
 	<div class="leader-info">
         <img class="leader-profileImg" src="/res/img/profileImg.png" alt="leader-profile image">
-        <span>리더닉네임</span>
+        <span>${item.nickname}</span>
     </div>
     <span>파티 번호 : ${item.boardPk}</span>
 	`
@@ -197,11 +197,11 @@ function makeDetail(item) {
 			}).then(function(myJson) {
 				if(myJson == -1) {
 					alert('이미 다른 파티에 가입되어있습니다.')
-					//location.href = `/user/myParty`
+					location.href = `/user/myParty?userPk=${hiddenUserPkElem.value}`
 					return
 				} else {
 					alert('파티 참여 신청 완료')
-					//location.href = '/user/myParty'
+					location.href = `/user/myParty?userPk=${hiddenUserPkElem.value}`
 					return
 				}
 			})

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.watnet.board.BoardMapper;
 import com.project.watnet.model.PartyUserEntity;
+import com.project.watnet.model.PostDomain;
 import com.project.watnet.model.PostEntity;
 
 @Service
@@ -17,14 +18,27 @@ public class PostService {
 	@Autowired
 	private BoardMapper bMapper;
 	
-	public List<PostEntity> selPost(PartyUserEntity p) {
+	public int getBoardPk(PartyUserEntity p) {
 		PartyUserEntity vo = bMapper.selParty(p);
 		if(vo==null) {
-			return null;
+			return 0;
 		}
-		PostEntity vo2 = new PostEntity();
-		vo2.setBoardPk(vo.getBoardPk());
+		return vo.getBoardPk();
+	}
+	
+	public int insPost(PostEntity p) {
+		PartyUserEntity vo = new PartyUserEntity();
+		vo.setUserPk(p.getSendUserPk());
 		
-		return mapper.selPost(vo2);
+		p.setBoardPk(getBoardPk(vo));
+		
+		return mapper.insPost(p);
+	}
+	
+	public List<PostDomain> selPost(PartyUserEntity p) {
+		PostEntity vo = new PostEntity();
+		vo.setBoardPk(getBoardPk(p));
+		
+		return mapper.selPost(vo);
 	}
 }

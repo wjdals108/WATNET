@@ -3,6 +3,7 @@ package com.project.watnet.board;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,5 +52,10 @@ public class BoardAjaxController {
 	@GetMapping("/selUserProfile")
 	public List<UserEntity> selUserProfile(PartyUserEntity p) {
 		return service.selUserProfile(p);
+	}
+	
+	@DeleteMapping
+	public int quitParty(PartyUserEntity p) {
+		return service.quitParty(p);
 	}
 }

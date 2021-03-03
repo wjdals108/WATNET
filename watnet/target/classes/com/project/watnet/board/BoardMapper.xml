@@ -6,9 +6,16 @@
  	
  	<insert id="insBoard" useGeneratedKeys="true" keyProperty="boardPk">
  		INSERT INTO t_board
- 		(category, title, shareId, sharePw, leaderpNum, startDt, endDt, price, ctnt)
+ 		(category, title, shareId, sharePw, leaderPk, leaderpNum, startDt, endDt, price, ctnt)
  		VALUES
- 		(#{category}, #{title}, #{shareId}, #{sharePw}, #{leaderpNum}, #{startDt}, #{endDt}, #{price}, #{ctnt})
+ 		(#{category}, #{title}, #{shareId}, #{sharePw}, #{leaderPk}, #{leaderpNum}, #{startDt}, #{endDt}, #{price}, #{ctnt})
+ 	</insert>
+ 	
+ 	<insert id="makeParty">
+ 		INSERT INTO t_partyuser
+ 		(boardPk, userPk, isLeader)
+ 		VALUES
+ 		(#{boardPk}, #{userPk}, #{isLeader})
  	</insert>
  	
  	<insert id="insParty">
@@ -47,11 +54,13 @@
  	</select>
  	
  	<select id="selBoard" resultType="BoardDomain">
- 		SELECT A.*, B.nm
- 		FROM t_board A
- 		INNER JOIN t_board_manage B
- 		ON A.category = B.category
- 		WHERE A.boardPk = #{boardPk}
+ 		SELECT A.*, B.nm, C.nickname
+		FROM t_board A
+		INNER JOIN t_board_manage B
+		ON A.category = B.category
+		INNER JOIN t_user C
+		ON A.leaderPk = C.userPk
+		WHERE A.boardPk = #{boardPk}
  	</select>
  	
  	<select id="selUserProfile" resultType="UserEntity">
@@ -63,10 +72,45 @@
  		
  	</select>
  	
- 	<update id="updBoard">
+ 	<update id="updPlusRecruitNum">
  		UPDATE t_board
  		SET recruitNum = recruitNum + 1
  		WHERE boardPk = #{boardPk}
  	</update>
+ 	
+ 	<update id="updMinusRecruitNum">
+ 		UPDATE t_board
+ 		SET recruitNum = recruitNum - 1
+ 		WHERE boardPk = #{boardPk}
+ 	</update>
+ 	
+ 	<delete id="quitParty">
+ 		DELETE FROM t_partyuser
+ 		<choose>
+ 			<when test="isLeader == 1">
+ 				WHERE boardPk = #{boardPk}
+ 			</when>
+ 			<otherwise>
+ 				WHERE userPk = #{userPk}	
+ 			</otherwise>
+ 		</choose>
+ 	</delete>
+ 	
+ 	<delete id="delBoard">
+ 		DELETE FROM t_board
+ 		WHERE boardPk = #{boardPk}
+ 	</delete>
+ 	
+ 	<delete id="delPost">
+ 		DELETE FROM t_post
+ 		<choose>
+ 			<when test="isLeader == 1">
+ 				WHERE boardPk = #{boardPk}
+ 			</when>
+ 			<otherwise>
+ 				WHERE sendUserPk = #{userPk}	
+ 			</otherwise>
+ 		</choose>
+ 	</delete>
  	
  </mapper>

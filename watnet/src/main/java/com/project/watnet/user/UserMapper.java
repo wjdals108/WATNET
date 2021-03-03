@@ -2,6 +2,7 @@ package com.project.watnet.user;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.project.watnet.model.PartyUserEntity;
 import com.project.watnet.model.UserDomain;
 import com.project.watnet.model.UserEntity;
 import com.project.watnet.model.UtilsEntity;

@@ -7,6 +7,7 @@ public class BoardEntity {
 	private String title;
 	private String shareId;
 	private String sharePw;
+	private int leaderPk;
 	private String leaderpNum;
 	private String startDt;
 	private String endDt;
@@ -15,6 +16,13 @@ public class BoardEntity {
 	private int recruitNum;
 	private int isDel;
 	
+	
+	public int getLeaderPk() {
+		return leaderPk;
+	}
+	public void setLeaderPk(int leaderPk) {
+		this.leaderPk = leaderPk;
+	}
 	public int getBoardPk() {
 		return boardPk;
 	}
