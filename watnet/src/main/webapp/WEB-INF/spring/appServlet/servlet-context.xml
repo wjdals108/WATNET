@@ -38,7 +38,7 @@
 		<beans:property name="jdbcUrl"
 			value="jdbc:mysql://localhost/watnet" />
 		<beans:property name="username" value="root" />
-		<beans:property name="password" value="1234" />
+		<beans:property name="password" value="koreait2020" />
 	</beans:bean>
 
 	<beans:bean id="dataSource"

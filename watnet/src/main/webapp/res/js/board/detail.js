@@ -22,6 +22,9 @@ function selBoard() {
 		return res.json()
 	}).then(function(myJson) {
 		makeDetail(myJson)
+		detailCancleBtn.addEventListener('click', function() {
+			backToList(myJson.category)
+		})
 	})
 }
 
@@ -37,6 +40,14 @@ function selUserProfile() {
 			makeNoneUser()
 		}
 	})
+}
+
+function backToList(category) {
+	if(category == 1) {
+		location.href="/board/netflix"
+	} else if(category == 2) {
+		location.href="/board/watcha"
+	}
 }
 
 function makeUser(myJson) {

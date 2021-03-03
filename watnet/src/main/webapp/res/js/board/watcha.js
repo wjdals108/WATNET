@@ -112,12 +112,13 @@ function makeArticle(item) {
 	let leftStartDays = Math.ceil((startDt.getTime()-nowDt.getTime())/(1000*3600*24))
 	let leftLastDays = Math.ceil((endDt.getTime()-startDt.getTime())/(1000*3600*24))
 	
-	var article = document.createElement('article')
-	article.classList.add('board-article')
+	var div = document.createElement('div')
 	
 	if(item.recruitNum == 2) {
-		article.innerHTML =
+		div.innerHTML =
 		`
+		<a href='/board/detail?boardPk=${item.boardPk}'>
+		<article class="board-article">
 		<h2 class="article-h2">왓챠 프리미엄</h2>
 		<span class="party-name">${item.title}</span>
 		<div class="article-img">
@@ -132,10 +133,14 @@ function makeArticle(item) {
 			</div>
 			<span class="pay-point"><span class="price">${item.price}</span>원</span>
 		</div>
+		</article>
+		</a>
 		`
 	} else if(item.recruitNum == 3) {
-		article.innerHTML =
+		div.innerHTML =
 		`
+		<a href='/board/detail?boardPk=${item.boardPk}'>
+		<article class="board-article">
 		<h2 class="article-h2">왓챠 프리미엄</h2>
 		<span class="party-name">${item.title}</span>
 		<div class="article-img">
@@ -150,10 +155,14 @@ function makeArticle(item) {
 			</div>
 			<span class="pay-point"><span class="price">${item.price}</span>원</span>
 		</div>
+		</article>
+		</a>
 		`
 	} else {
-		article.innerHTML =
+		div.innerHTML =
 		`
+		<a href='/board/detail?boardPk=${item.boardPk}'>
+		<article class="board-article">
 		<h2 class="article-h2">왓챠 프리미엄</h2>
 		<span class="party-name">${item.title}</span>
 		<div class="article-img">
@@ -168,10 +177,12 @@ function makeArticle(item) {
 			</div>
 			<span class="pay-point"><span class="price">${item.price}</span>원</span>
 		</div>
+		</article>
+		</a>
 		`
 	}
 	
-	boardElem.append(article)
+	boardElem.append(div)
 }
 
 function moreSelect() {

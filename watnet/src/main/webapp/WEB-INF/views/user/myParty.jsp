@@ -17,23 +17,22 @@
     </div>
     
     <div id="shareInfoModal" class="modal hidden">
-    	<div class="md_overlay"></div>
-		<div class="shareInfo_md_content">
-			<div class="shareInfo-title">공유 ID/PW 확인</div>
-			<div class="shareInfo-info-div">
-				<div class="shareInfo-data">
-					<span class="shareInfo-span">ID</span>
-					<span class="shareInfo-ID">hn99710@naver.com</span>
-					<button type="button">COPY</button>
+    </div>
+    
+    <div id="postModal" class="post-modal-container hidden">
+    	<div class="post-md_overlay"></div>
+    	<div class="post-modal-content">
+    		<div class="view-post-container">
+    			<div class="view-post"></div>
+        </div>
+        <div class="post-write-container">
+				  <textarea id="post-write"></textarea>
+				  <div class="post-write-btn">
+				  	<button id="post-submitBtn" type="button">전송</button>
+				  	<button id="closePostModalBtn" type="button">닫기</button>
+				  </div>
 				</div>
-				<div class="shareInfo-data">
-					<span class="shareInfo-span">PW</span>
-					<span class="shareInfo-PW">koreait2020</span>
-					<button type="button">COPY</button>
-				</div>
-			</div>
-			<button id="shareInfo_md_close" type="button">확인</button>
-		</div>
+    	</div>
     </div>
     
 </div>

@@ -71,9 +71,9 @@ if(makePartySubElem) {
 		makePartyStartDt.setMonth(makePartyStartDt.getMonth() + progressMon)
 		var endDt = getStringDay(makePartyStartDt)
 		if(hiddenCategoryElem.value == 1){
-			let partyPrice = netflixPrice * progressMon / 4 			
+			partyPrice = netflixPrice * progressMon / 4 			
 		} else if(hiddenCategoryElem.value == 2) {
-			let partyPrice = watchaPrice * progressMon / 4
+			partyPrice = watchaPrice * progressMon / 4
 		}
 		
 		makePartyEndDtElem.innerText = endDt

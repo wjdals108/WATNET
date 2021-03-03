@@ -18,6 +18,34 @@ if(hiddenUserPkElem.value === '') {
 	`
 }
 
+function makeNullParty() {
+	myPartySpanElem.innerHTML = 
+	`
+	<span class="myParty-info-span">
+	등록되어 있는 Party가 없습니다!<br>
+	지금 바로 Party를 찾으러 가보세요
+	</span>
+	`
+}
+
+function openShareInfoModal() {
+	shareInfoModalElem.classList.remove('hidden')
+}
+
+function closeShareInfoModal() {
+	shareInfoModalElem.classList.add('hidden')
+}
+
+function copyToClipboard(val) {
+  var t = document.createElement("textarea")
+  document.body.appendChild(t)
+  t.value = val
+  t.select()
+  document.execCommand('copy')
+  document.body.removeChild(t)
+	alert('복사되었습니다.')
+}
+
 selMyParty()
 
 function selMyParty() {
@@ -25,8 +53,13 @@ function selMyParty() {
 	.then(function(res) {
 		return res.json()
 	}).then(function(myJson) {
+		if(myJson.boardPk == 0) {
+			makeNullParty()
+			return
+		}
 		makeMyParty(myJson)
 		selUserProfile(myJson)
+		makeShareInfoModal(myJson)
 	})
 	
 	
@@ -65,9 +98,30 @@ function selMyParty() {
 		`
 		myPartyUserElem.append(userContainerElem)
 	}
+	
+	function makeShareInfoModal(myJson) {
+		shareInfoModalElem.innerHTML = 
+		`
+		<div class="md_overlay"></div>
+		<div class="shareInfo_md_content">
+			<div class="shareInfo-title">공유 ID/PW 확인</div>
+			<div class="shareInfo-info-div">
+				<div class="shareInfo-data">
+					<span class="shareInfo-span">ID</span>
+					<span class="shareInfo-ID">${myJson.shareId}</span>
+					<button type="button" onclick="copyToClipboard('${myJson.shareId}')">COPY</button>
+				</div>
+				<div class="shareInfo-data">
+					<span class="shareInfo-span">PW</span>
+					<span class="shareInfo-PW">${myJson.sharePw}</span>
+					<button type="button" onclick="copyToClipboard('${myJson.sharePw}')">COPY</button>
+				</div>
+			</div>
+			<button id="shareInfo_md_close" onclick="closeShareInfoModal()" type="button">확인</button>
+		</div>
+		`
+	}
 }
-
-
 
 function numberWithCommas(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -86,10 +140,59 @@ function makeMyParty(item) {
 	
 	myPartyBtnElem.innerHTML = 
 	`
-	<button id="chkShareInfo" type="button">공유 ID/PW 확인</button>
+	<button id="chkShareInfo" onclick="openShareInfoModal()" type="button">공유 ID/PW 확인</button>
     <div class="myParty-btn">
-        <button id="openPostBtn" type="button">쪽지보내기</button>
+        <button id="openPostBtn" type="button" onclick="openPostModal()">쪽지보내기</button>
         <button id="quitPartyBtn" type="button">파티 탈퇴</button>
     </div>
 	`
 }
+
+//post 부분
+var postModalElem = document.querySelector('#postModal')
+var viewPostElem = document.querySelector('.view-post')
+
+viewPostElem.scrollTop = viewPostElem.scrollHeight
+
+var postSubBtn = document.querySelector('#post-submitBtn')
+var closePostModalBtn = document.querySelector('#closePostModalBtn')
+
+function openPostModal() {
+	postModalElem.classList.remove('hidden')
+}
+
+function closePostModal() {
+	postModalElem.classList.add('hidden')
+}
+
+closePostModalBtn.addEventListener('click', closePostModal)
+
+function selPost() {
+	fetch(``)
+	
+	
+}
+
+function makePost(item) {
+	var post = document.createElement('div')
+	post.classList.add('post-container')
+	if(item.sendUserPk == hiddenUserPkElem.value){
+		post.classList.add('myPost')
+	}
+	post.innerHTML = 
+	`
+	<img class="post-profileImg" src="/res/img/user/${item.sendUserPk}/${item.profileImg}" alt="user profile image">
+	<div class="post-username_ctnt">
+	    <span class="post-userNickname">${item.nickname}</span>
+	    <p class="post-ctnt">${item.ctnt}</p>
+	</div>
+	<span class="post-dt">${item.regDt}</span>
+	`
+	viewPostElem.append(post)
+}
+
+
+
+
+
+

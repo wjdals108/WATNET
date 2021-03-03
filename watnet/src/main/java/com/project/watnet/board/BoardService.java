@@ -71,6 +71,11 @@ public class BoardService {
 	
 	public BoardDomain selMyParty(PartyUserEntity p) {
 		PartyUserEntity vo = mapper.selParty(p);
+		if(vo==null) {
+			BoardDomain vo2 = new BoardDomain();
+			vo2.setBoardPk(0);
+			return vo2;
+		}
 		BoardDomain vo2 = new BoardDomain();
 		vo2.setBoardPk(vo.getBoardPk());
 		return mapper.selBoard(vo2);
