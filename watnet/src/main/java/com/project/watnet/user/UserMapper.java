@@ -14,6 +14,7 @@ public interface UserMapper {
 	UserDomain selUser(UserEntity p);
 	int updPw(UserEntity p);
 	int updPoint(UserDomain p);
+	int updProfile(UserDomain p);
 	UtilsEntity selUtils(UtilsEntity p);
 	int delUtils(UtilsEntity p);
 }

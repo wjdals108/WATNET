@@ -7,9 +7,9 @@ var modalElem = document.querySelector('.recVideo_modal')
 var iframeElem = modalElem.querySelector('#recVideo_iframe')
 var mdCloseElem = modalElem.querySelector('#recVideo_md_close')
 
-const rec1WatchaUrl = 'https://www.youtube.com/embed/BoYVltlxxJM'
-const rec2WatchaUrl = 'https://www.youtube.com/embed/g5fuR8GanFI'
-const rec3WatchaUrl = 'https://www.youtube.com/embed/rApl8GrZ88E'
+const rec1WatchaUrl = 'https://www.youtube.com/embed/FaEDnEwfQEw'
+const rec2WatchaUrl = 'https://www.youtube.com/embed/gE3-PqU7SOE'
+const rec3WatchaUrl = 'https://www.youtube.com/embed/4hWtJZ4BgSw'
 const rec4WatchaUrl = 'https://www.youtube.com/embed/ME9IMbWkn1Y'
 
 function openModal(){
@@ -47,11 +47,18 @@ mdCloseElem.addEventListener('click', function() {
 
 var makePartyElem = document.querySelector('#makePartyBtn')
 var loginUserElem = document.querySelector('#loginUserPNum')
+var hiddenUserPkElem = document.querySelector('#hiddenUserPk')
+var hiddenUserCategoryElem = document.querySelector('#hiddenUserCategory')
+
 if(makePartyElem) {
 	function makeParty() {
-		if(loginUserElem.value == null || loginUserElem.value === '') {
+		if(hiddenUserPkElem.value == null || hiddenUserPkElem.value === '') {
+			alert('로그인 후 이용해 주세요')
+			location.href = 'user/login'
+			return
+		}	else if(loginUserElem.value == null || loginUserElem.value === '') {
 			alert('고객님의 프로필에 휴대폰 정보가 없습니다. 휴대폰 번호를 등록해주세요.')
-			//location.href = '프로필 편집'
+			location.href = `/user/editProfileChkPw?userPk=${hiddenUserPkElem.value}`
 			return;
 		}
 		location.href = '/board/makeParty?category=2'

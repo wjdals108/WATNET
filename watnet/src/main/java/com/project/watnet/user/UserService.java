@@ -14,7 +14,6 @@ import com.project.watnet.FileUtils;
 import com.project.watnet.MailUtils;
 import com.project.watnet.SecurityUtils;
 import com.project.watnet.SmsUtils;
-import com.project.watnet.model.PartyUserEntity;
 import com.project.watnet.model.UserDomain;
 import com.project.watnet.model.UserEntity;
 import com.project.watnet.model.UtilsEntity;
@@ -137,6 +136,15 @@ public class UserService {
 		return 1;
 	}
 	
+	//0: 비밀번호 틀림, 1:성공
+	public int chkPw(UserEntity p) {
+		UserDomain vo = mapper.selUser(p);
+		if (!BCrypt.checkpw(p.getUserPw(), vo.getUserPw())) {
+			return 0;
+		}
+		return 1;
+	}
+	
 	//0: 인증번호가 db에 저장되어 있지 않음(틀렸다는얘기)		1: 인증번호 확인 완료
 	public int chkTempPw(UtilsEntity p) {
 		UtilsEntity vo = mapper.selUtils(p);
@@ -156,6 +164,42 @@ public class UserService {
 	
 	public UserDomain selUser(UserDomain p) {
 		return mapper.selUser(p);
+	}
+	
+	public int updProfile(UserDomain p, MultipartFile mf) {
+		// 비밀번호 암호화 하는 부분
+		String salt = sUtils.getSalt();
+		String hashPw = sUtils.getHashPw(p.getUserPw(), salt);
+		p.setUserPw(hashPw);
+		int userPk = p.getUserPk();
+		String folder = "/res/img/user/" + userPk;
+		String basePath = fUtils.getBasePath(folder);
+		
+		if(mf==null) {
+			p.setProfileImg(null);
+		} else {
+			//profileImg DB에 저장하기 위해 하는부분
+			String profileImg = fUtils.getRandomFileNm(mf.getOriginalFilename());
+			p.setProfileImg(profileImg);
+			try {
+				fUtils.makeFolders(basePath);
+				File file = new File(basePath, profileImg);
+				mf.transferTo(file);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//이미 프로필 사진이 존재하면 삭제
+		UserEntity selVo = new UserEntity();
+		selVo.setUserPk(userPk);
+		UserEntity userInfo = mapper.selUser(selVo);
+		if(userInfo.getProfileImg() != null) {
+			File filechk = new File(basePath, userInfo.getProfileImg());
+			if(filechk.exists()) {
+				filechk.delete();
+			}
+		}
+		return mapper.updProfile(p);
 	}
 
 }

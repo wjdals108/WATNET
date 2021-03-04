@@ -28,12 +28,14 @@ function makeNullParty() {
 	`
 }
 
-function openShareInfoModal(startDt) {
-	console.log(startDt)
+function openShareInfoModal(startDt, leaderPk) {
+	var startDate = new Date(startDt)
+	var nowDate = new Date()
 	
-	
-	
-	
+	if(nowDate <= startDate && leaderPk != hiddenUserPkElem.value) {
+		alert('계정 공유 시작날짜가 되어야 공유 ID/PW를 확인 하실 수 있습니다.')
+		return
+	}
 	shareInfoModalElem.classList.remove('hidden')
 }
 
@@ -145,7 +147,7 @@ function makeMyParty(item) {
 	
 	myPartyBtnElem.innerHTML = 
 	`
-	<button id="chkShareInfo" onclick="openShareInfoModal('${item.startDt}')" type="button">공유 ID/PW 확인</button>
+	<button id="chkShareInfo" onclick="openShareInfoModal('${item.startDt}', '${item.leaderPk}')" type="button">공유 ID/PW 확인</button>
     <div class="myParty-btn">
         <button id="openPostBtn" type="button" onclick="openPostModal()">쪽지보내기</button>
         <button id="quitPartyBtn" onclick="quitParty()" type="button">파티 탈퇴</button>

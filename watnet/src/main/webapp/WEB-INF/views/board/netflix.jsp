@@ -2,19 +2,23 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<input id="hiddenUserPk" type="hidden" value="${sessionScope.loginUser.userPk}">
+<input id="hiddenUserCategory" type="hidden" value="${sessionScope.loginUser.userCategory}">
+
+
 <div class="border-main-container">
 	<button id="goUp" type="button" onclick="up()"></button>
 
 	<div class="recVideo-container">
 		<h2>WATNET 추천 영상</h2>
 		<div class="recVideo-img">
-			<img id="recVideo_img1" src="https://img.youtube.com/vi/V7WE7Fee6z8/mqdefault.jpg"
+			<img id="recVideo_img1" src="https://img.youtube.com/vi/UYlK5_lXrzA/mqdefault.jpg"
 				alt="watnet recommand video 1">
-			<img id="recVideo_img2" src="https://img.youtube.com/vi/N2Evva6aLC8/mqdefault.jpg"
+			<img id="recVideo_img2" src="https://img.youtube.com/vi/KGAWN7zG83c/mqdefault.jpg"
 				alt="watnet recommand video 2">
-			<img id="recVideo_img3" src="https://img.youtube.com/vi/yXwC5Oe_5Ok/mqdefault.jpg"
+			<img id="recVideo_img3" src="https://img.youtube.com/vi/nRQoQsL9UXs/mqdefault.jpg"
 				alt="watnet recommand video 3">
-			<img id="recVideo_img4" src="https://img.youtube.com/vi/ITH6ttdXBqk/mqdefault.jpg"
+			<img id="recVideo_img4" src="https://img.youtube.com/vi/W6v1yM_c1Fg/mqdefault.jpg"
 				alt="watnet recommand video 4">
 		</div>
 	</div>

@@ -11,7 +11,7 @@
 				alt="WATNET LOGO"></a>
 			<ul>
 				<li><a href="/index">HOME</a></li>
-				<li>CONTENTS</li>
+				<li><a href="/board/contents">CONTENTS</a></li>
 				<c:forEach items="${menuList}" var="menu">
 				<li><a href="/board/${fn:toLowerCase(menu.nm)}">${menu.nm}</a></li>
 				</c:forEach>
@@ -19,6 +19,9 @@
 			</ul>
 			<c:choose>
 				<c:when test="${sessionScope.loginUser != null}">
+					<a href="/user/editProfileChkPw?userPk=${sessionScope.loginUser.userPk}">
+						<button>프로필편집</button>
+					</a>
 					<a href="/user/logout">
 						<button id="index-logout-btn" type="button">로그아웃</button>
 					</a>

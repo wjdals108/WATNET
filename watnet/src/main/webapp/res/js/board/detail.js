@@ -12,6 +12,7 @@ var hiddenUserPkElem = document.querySelector('#loginUserPk')
 
 var detailCancleBtn = document.querySelector('#detail-cancleBtn')
 var detailSubBtnElem = document.querySelector('#detail-submitBtn')
+var detailDelBtnElem = document.querySelector('#detail-deleteBtn')
 
 selBoard()
 selUserProfile()
@@ -231,3 +232,25 @@ function numberWithCommas(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+//board 삭제 부분
+function delBoard() {
+	if(confirm('정말 삭제하시겠습니까?')==true) {
+		fetch(`/boardAjax?userPk=${hiddenUserPkElem.value}`, {
+			method: 'delete'
+		}).then(function(res) {
+			return res.json()
+		}).then(function(myJson) {
+			console.log(myJson)
+			if(myJson == 1) {
+				alert('삭제가 완료되었습니다.')
+				location.href = `/user/myParty?userPk=${hiddenUserPkElem.value}`
+			} else {
+				alert('실패')
+				return
+			}
+		})
+	} else {
+		return
+	}
+}
+detailDelBtnElem.addEventListener('click', delBoard)

@@ -41,6 +41,11 @@
 		AND isDel = 0
  	</select>
  	
+ 	<select id="getLeaderPk" resultType="int">
+ 		SELECT leaderPk FROM t_board
+ 		WHERE boardPk = #{boardPk}
+ 	</select>
+ 	
  	<select id="selParty" resultType="PartyUserEntity">
  		SELECT * FROM t_partyuser
  		<choose>

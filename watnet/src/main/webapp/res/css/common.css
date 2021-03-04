@@ -967,7 +967,8 @@ ul>li {
 }
 
 #detail-cancleBtn,
-#detail-submitBtn {
+#detail-submitBtn,
+#detail-deleteBtn {
     width: 240px;
     height: 70px;
     margin: 2px 0;
@@ -984,7 +985,8 @@ ul>li {
     background-color: #cecdd4;
 }
 
-#detail-submitBtn {
+#detail-submitBtn,
+#detail-deleteBtn {
     background-color: #DB202C;
 }
 
@@ -1348,9 +1350,181 @@ ul>li {
 }
 
 
+/* ---------------------------- editProfile css 부분 */
 
+.edit-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
 
+.edit-h3 {
+    margin: 56px 0 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+}
 
+.pw-form,
+.edit_userinfo-form,
+.edit_etc-form {
+    padding: 25px 40px;
+    border: solid 1px #bcbcbc;
+    border-radius: 20px;
+}
+
+.pw-list,
+.edit_userinfo-list,
+.edit_etc-list {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.pw-list li,
+.edit_userinfo-list li,
+.edit_etc-list li {
+    margin: 5px 0;
+    padding: 0;
+}
+
+.pw-list > li > span,
+.edit_userinfo-list > li > span,
+.edit_etc-list > li > span,
+.profileImg-container > span {
+    display: inline-block;
+    width: 120px;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #333333;
+}
+
+.pw-list > li > input,
+.edit_userinfo-list > li > input,
+.edit_etc-list > li > input {
+    width: 180px;
+    height: 38px;
+    padding: 0 15px;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    outline: none;
+    margin-right: 10px;
+}
+
+#nicknameChk,
+#phoneNumberChk {
+    padding: 0 16px;
+    height: 32px;
+    font-size: 14px;
+    border: 0;
+    border-radius: 17px;
+    width: 120px;
+    color: #DB202C;
+    border: solid 1px #DB202C;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.edit_etc-list > li > .explanation,
+.profileImg-container > .explanation,
+.edit_userinfo-list > li > .explanation {
+    display: inline;
+    font-size: 12px;
+    font-weight: 300;
+    color: #888888;
+    line-height: 16px;
+    word-break: keep-all;
+}
+
+#profileImg {
+    display: none;
+}
+
+#profileImg-btn {
+    display: inline-block;
+    color: #DB202C;
+    border: solid 1px #DB202C;
+    min-width: auto;
+    padding: 0 16px;
+    height: 32px;
+    font-size: 14px;
+    line-height: 30px;
+    border-radius: 17px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.edit-btn-container {
+    margin: 60px 0;
+    text-align: center;
+}
+
+#cancleBtn,
+#editBtn {
+    width: 240px;
+    height: 70px;
+    margin: 2px 0;
+    padding: 0 10px;
+    color: #fff;
+    text-align: center;
+    border: 0;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#cancleBtn {
+    background-color: #cecdd4;
+}
+
+#editBtn {
+    background-color: #DB202C;
+}
+
+/* --------------------- editProfileChkPw css 부분 */
+.editProfileChkPw-pwChk-container {
+    position: fixed;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.editProfileChkPw-pwChk-form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+#editProfileChkPw-span {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+#editProfileChkPw-pw {
+    margin: 10px 0;
+    padding: 10px;
+    width: 400px;
+    height: 40px;
+    background-color: #dddddd;
+    border: 0;
+}
+
+#editProfileChkPw-pwChkBtn {
+    width: 100%;
+    height: 40px;
+    background-color: #DB202C;
+    border: 0;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
 
 
 

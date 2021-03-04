@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.watnet.model.BoardDTO;
+import com.project.watnet.model.BoardEntity;
 
 @Controller
 @RequestMapping("/board")
@@ -33,6 +34,11 @@ public class BoardConroller {
 	public void makeParty() {}
 	
 	@GetMapping("/detail")
-	public void detail() {}
+	public void detail(BoardEntity p, Model model) {
+		model.addAttribute("leaderPk", service.getLeaderPk(p));
+	}
+	
+	@GetMapping("/contents")
+	public void contents() {}
 
 }

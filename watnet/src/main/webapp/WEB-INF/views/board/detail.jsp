@@ -23,6 +23,13 @@
     </div>
     <div class="detail-btn-container">
         <button id="detail-cancleBtn" type="button">목록</button>
-        <button id="detail-submitBtn" type="button">참여신청</button>
+        <c:choose>
+        	<c:when test="${sessionScope.loginUser.userPk == leaderPk}">
+        		<button id="detail-deleteBtn" type="button">삭제</button>
+        	</c:when>
+        	<c:otherwise>
+        		<button id="detail-submitBtn" type="button">참여신청</button>	
+        	</c:otherwise>
+        </c:choose>
     </div>
 </div>

@@ -7,10 +7,10 @@ var modalElem = document.querySelector('.recVideo_modal')
 var iframeElem = modalElem.querySelector('#recVideo_iframe')
 var mdCloseElem = modalElem.querySelector('#recVideo_md_close')
 
-const rec1NetflixUrl = 'https://www.youtube.com/embed/V7WE7Fee6z8'
-const rec2NetflixUrl = 'https://www.youtube.com/embed/N2Evva6aLC8'
-const rec3NetflixUrl = 'https://www.youtube.com/embed/yXwC5Oe_5Ok'
-const rec4NetflixUrl = 'https://www.youtube.com/embed/ITH6ttdXBqk'
+const rec1NetflixUrl = 'https://www.youtube.com/embed/UYlK5_lXrzA'
+const rec2NetflixUrl = 'https://www.youtube.com/embed/KGAWN7zG83c'
+const rec3NetflixUrl = 'https://www.youtube.com/embed/nRQoQsL9UXs'
+const rec4NetflixUrl = 'https://www.youtube.com/embed/W6v1yM_c1Fg'
 
 function openModal(){
 	modalElem.classList.remove('hidden')
@@ -63,12 +63,20 @@ function getStringDay(date) {
 
 var makePartyElem = document.querySelector('#makePartyBtn')
 var loginUserElem = document.querySelector('#loginUserPNum')
+var hiddenUserPkElem = document.querySelector('#hiddenUserPk')
+var hiddenUserCategoryElem = document.querySelector('#hiddenUserCategory')
+
 if(makePartyElem) {
 	function makeParty() {
-		if(loginUserElem.value == null || loginUserElem.value === '') {
+		if(hiddenUserPkElem.value == null || hiddenUserPkElem.value === '') {
+			alert('로그인 후 이용해 주세요')
+			location.href = 'user/login'
+			return
+		}
+		else if(loginUserElem.value == null || loginUserElem.value === '') {
 			alert('고객님의 프로필에 휴대폰 정보가 없습니다. 휴대폰 번호를 등록해주세요.')
-			//location.href = '프로필 편집'
-			return;
+			location.href = `/user/editProfileChkPw?userPk=${hiddenUserPkElem.value}`
+			return
 		}
 		location.href = '/board/makeParty?category=1'
 	}
@@ -174,12 +182,11 @@ function makeArticle(item) {
 		</div>
 		</article>
 		</a>
-		`
+		` 
 	}
 	
 	boardElem.append(div)
 }
-
 
 //인피니티 스크롤 구현
 function getDocumentHeight() {

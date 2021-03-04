@@ -16,6 +16,7 @@ public interface BoardMapper {
 	int selMaxPageNum(BoardDTO p);
 	int makeParty(PartyUserEntity p);
 	int insParty(PartyUserEntity p);
+	int getLeaderPk(BoardEntity p);
 	List<BoardEntity> selBoardList(BoardDTO p);
 	PartyUserEntity selParty(PartyUserEntity p);
 	BoardDomain selBoard(BoardEntity p);

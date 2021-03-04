@@ -25,6 +25,10 @@ public class BoardService {
 		return vo.getBoardPk();
 	}
 	
+	public int getLeaderPk(BoardEntity p) {
+		return mapper.getLeaderPk(p);
+	}
+	
 	//-1:이미 등록되어 있는 user		 0: insBoard 실패		그외: category return
 	public int insBoard(BoardDomain p) {
 		PartyUserEntity vo = new PartyUserEntity();

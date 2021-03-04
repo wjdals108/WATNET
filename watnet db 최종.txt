@@ -1,3 +1,8 @@
+watnet
+db
+최종
+
+
 CREATE TABLE t_user (
 	userPk INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	userId VARCHAR(20) NOT NULL UNIQUE,
@@ -39,6 +44,7 @@ CREATE TABLE t_board(
 	title VARCHAR(50) NOT NULL,
 	shareId VARCHAR(20) NOT NULL,
 	sharePw VARCHAR(20) NOT NULL,
+	leaderPk INT UNSIGNED NOT NULL UNIQUE,
 	leaderpNum VARCHAR(13) NOT NULL,
 	startDt DATE NOT NULL,
 	endDt DATE NOT NULL,
@@ -47,12 +53,14 @@ CREATE TABLE t_board(
 	recruitNum INT(1) UNSIGNED DEFAULT 1 CHECK(recruitNum IN (1, 2, 3, 4)),
 	isDel INT(1) UNSIGNED DEFAULT 0 CHECK(isDel IN(0, 1)),
 	FOREIGN KEY (category) REFERENCES t_board_manage(category),
+	FOREIGN KEY (leaderPk) REFERENCES t_user(userPk),
 	FOREIGN KEY (leaderpNum) REFERENCES t_user(pNum)
 );
 
 CREATE TABLE t_partyUser(
 	boardPk INT UNSIGNED NOT NULL,
 	userPk INT UNSIGNED NOT NULL,
+	isLeader INT UNSIGNED DEFAULT 0 CHECK(isLeader IN(0, 1)),
 	PRIMARY KEY(boardPk, userPk),
 	FOREIGN KEY (boardPk) REFERENCES t_board(boardPk),
 	FOREIGN KEY (userPk) REFERENCES t_user(userPk)

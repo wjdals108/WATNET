@@ -29,6 +29,9 @@
  			<when test="pNum != null and pNum != ''">
 		 		WHERE pNum = #{pNum} 			
  			</when>
+ 			<when test="userPk != null and userPk != ''">
+ 				WHERE userPk = #{userPk}
+ 			</when>
  		</choose>
  	</select>
  	
@@ -47,6 +50,12 @@
  		UPDATE t_user
  		SET userPoint = userPoint+ #{modPoint}
  		WHERE userId = #{userId}
+ 	</update>
+ 	
+ 	<update id="updProfile">
+ 		UPDATE t_user
+ 		SET userPw = #{userPw}, nickname = #{nickname}, userMail = #{userMail}, pNum = #{pNum}, profileImg = #{profileImg}
+ 		WHERE userPk = #{userPk}
  	</update>
  	
  	<delete id="delUtils">

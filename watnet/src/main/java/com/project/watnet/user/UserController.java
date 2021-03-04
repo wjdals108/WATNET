@@ -56,7 +56,12 @@ public class UserController {
 	
 	@GetMapping("/myParty")
 	public void myParty() {}
-
+	
+	@GetMapping("/editProfile")
+	public void editProfile() {}
+	
+	@GetMapping("/editProfileChkPw")
+	public void editProfileChkPw() {}
 	
 	
 	@RequestMapping(value = "/kakaologin", produces = "application/json", method = { RequestMethod.GET, RequestMethod.POST })
