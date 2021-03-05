@@ -9,13 +9,22 @@ import com.project.watnet.model.BoardDTO;
 import com.project.watnet.model.BoardDomain;
 import com.project.watnet.model.BoardEntity;
 import com.project.watnet.model.PartyUserEntity;
+import com.project.watnet.model.UserDomain;
 import com.project.watnet.model.UserEntity;
+import com.project.watnet.user.UserMapper;
+import com.project.watnet.user.UserService;
 
 @Service
 public class BoardService {
 
 	@Autowired
 	private BoardMapper mapper;
+	
+	@Autowired
+	private UserService uService;
+	
+	@Autowired
+	private UserMapper uMapper;
 	
 	public int getBoardPk(PartyUserEntity p) {
 		PartyUserEntity vo = mapper.selParty(p);
@@ -52,7 +61,7 @@ public class BoardService {
 		return mapper.makeParty(p);
 	}
 	
-	//-1:이미 가입되어있는 파티가 있음
+	//-1:이미 가입되어있는 파티가 있음			-2: point가 부족함
 	public int joinParty(PartyUserEntity p) {
 		PartyUserEntity vo = new PartyUserEntity();
 		vo.setUserPk(p.getUserPk());
@@ -60,6 +69,23 @@ public class BoardService {
 		if(mapper.selParty(vo) != null) {
 			return -1;
 		}
+		
+		BoardDomain vo3 = new BoardDomain();
+		vo3.setBoardPk(p.getBoardPk());
+		vo3 = mapper.selBoard(vo3);
+		
+		uService.insPointHistory(p.getUserPk(), vo3.getPrice());
+		
+		UserDomain selUserVo = new UserDomain();
+		selUserVo.setUserPk(p.getUserPk());
+		selUserVo = uService.selUser(selUserVo);
+		if(selUserVo.getUserPoint() < vo3.getPrice()) {
+			return -2;
+		}
+		
+		selUserVo.setModPoint(vo3.getPrice());
+		uMapper.updPoint(selUserVo);
+		
 		vo.setBoardPk(p.getBoardPk());
 		mapper.updPlusRecruitNum(p);
 		

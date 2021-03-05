@@ -17,12 +17,31 @@
 				</c:forEach>
 				<li><a href="/user/myParty?userPk=${sessionScope.loginUser.userPk}">MY파티</a></li>
 			</ul>
+			<div id="header-right-section">
 			<c:choose>
 				<c:when test="${sessionScope.loginUser != null}">
-					<a href="/user/editProfileChkPw?userPk=${sessionScope.loginUser.userPk}">
-						<button>프로필편집</button>
-					</a>
-					<a href="/user/logout">
+					<div id="dropUl-pContainer">
+						<img id="header-myProfileImg" src="/res/img/user/${sessionScope.loginUser.userPk}/${sessionScope.loginUser.profileImg}" alt="my profile image" onerror="this.src='/res/img/profileImg.png'">
+						<ul id="header-dropUl">
+							<li class="dropUl-firstLi">
+								<span id="header-nickname">${sessionScope.loginUser.nickname }</span>
+								<a href="/user/myParty?userPk=${sessionScope.loginUser.userPk}">
+									<button id="goToMyPartyBtn" type="button">파티 관리</button>
+								</a>
+							</li>
+							<li>
+								<span>POINT :  <span class="redSpan">${sessionScope.loginUser.userPoint}</span></span>
+								<a href="/user/plusPoint">
+									<button id="chargePointBtn" type="button">충전</button>
+								</a>
+							</li>
+							<li>
+								<a href="/user/editProfileChkPw?userPk=${sessionScope.loginUser.userPk}">프로필 편집</a>
+								<a href="###">결제 내역 조회</a>
+							</li>
+						</ul>
+					</div>
+					<a id="logout-anchor" href="/user/logout">
 						<button id="index-logout-btn" type="button">로그아웃</button>
 					</a>
 				</c:when>
@@ -32,6 +51,7 @@
 					</a>
 				</c:otherwise>
 			</c:choose>
+			</div>
 		</div>
 	</nav>
 </header>

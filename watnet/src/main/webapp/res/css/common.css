@@ -10,11 +10,16 @@ body {
 
 a {
 	color: #000;
-    text-decoration: none;
+  text-decoration: none;
 }
 
 button {
     outline: none;
+}
+
+.hidden {
+	display: none !important;
+	position: absolute;
 }
 
 ul {
@@ -27,14 +32,89 @@ ul>li {
     margin: 10px;
 }
 
-.hidden {
-	display: none !important;
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#header-right-section {
+	display: flex;
+}
+
+/* ------------------- header drop 프로필 */
+#dropUl-pContainer {
+	position: relative;
+	text-align: center;
+}
+
+#header-myProfileImg {
+	width: 45px;
+	height: 45px;
+	margin: auto 20px;
+	cursor: pointer;
+	border-radius: 50%;
+}
+
+#header-dropUl {
+	z-index: 1;
+	opacity: 0;
+	visibility: hidden;
+	border: 1px solid #cfcbcb;
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	width: 200px;
+	left: -100px;
+	top: 50px;
+}
+
+#dropUl-pContainer:hover #header-dropUl{
+	opacity: 1;
+	visibility: visible;
+}
+
+.dropUl-firstLi > a {
+	width: 100%;
+}
+
+#header-dropUl > li {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 20px 0;
+	border-bottom: 1px solid #cfcbcb;
+	font-size: 14px;
+	font-weight: bold;
+	background-color: #fff;
+	justify-content: center;
+	align-items: center;
+}
+
+#header-nickname {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+#goToMyPartyBtn,
+#chargePointBtn {
+	width: 150px;
+	height: 30px;
+	background-color: #fff;
+	color: #DB202C;
+	font-weight: bold;
+	border: 1px solid #DB202C;
+	border-radius: 12px;
+	cursor: pointer;
 }
 
 #goUp {
 	background: url("/res/img/up.png") no-repeat;
 	background-position: center;
-  	background-size: cover;
+  background-size: cover;
 	position: fixed;
 	bottom: 30px;
 	right: 30px;
@@ -49,7 +129,7 @@ ul>li {
 #goUp:hover {
 	background: url("/res/img/up-hover.png") no-repeat;
 	background-position: center;
-  	background-size: cover;
+ 	background-size: cover;
 }
 
 .nav-container {
@@ -67,6 +147,12 @@ ul>li {
     height: 40px;
 }
 
+#logout-anchor {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 #index-login-btn,
 #index-logout-btn {
     width: 90px;
@@ -77,6 +163,7 @@ ul>li {
     color: #DB202C;
     cursor: pointer;
     font-size: 16px;
+    margin: auto;
 }
 
 
@@ -1482,8 +1569,9 @@ ul>li {
     background-color: #DB202C;
 }
 
-/* --------------------- editProfileChkPw css 부분 */
-.editProfileChkPw-pwChk-container {
+/* --------------------- editProfileChkPw, plusPoint css 부분 */
+.editProfileChkPw-pwChk-container,
+.plusPoint-container {
     position: fixed;
 	top: 0; left: 0;
 	width: 100%; height: 100%;
@@ -1493,7 +1581,8 @@ ul>li {
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-.editProfileChkPw-pwChk-form {
+.editProfileChkPw-pwChk-form,
+.plusPoint-form {
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -1501,13 +1590,15 @@ ul>li {
     background-color: #fff;
 }
 
-#editProfileChkPw-span {
+#editProfileChkPw-span,
+#plusPoint-span {
     font-size: 24px;
     font-weight: bold;
     margin: 20px 0;
 }
 
-#editProfileChkPw-pw {
+#editProfileChkPw-pw,
+#plusPoint-input {
     margin: 10px 0;
     padding: 10px;
     width: 400px;
@@ -1516,7 +1607,8 @@ ul>li {
     border: 0;
 }
 
-#editProfileChkPw-pwChkBtn {
+#editProfileChkPw-pwChkBtn,
+#plusPointSubBtn {
     width: 100%;
     height: 40px;
     background-color: #DB202C;
@@ -1525,6 +1617,7 @@ ul>li {
     font-size: 16px;
     cursor: pointer;
 }
+
 
 
 

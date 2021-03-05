@@ -63,6 +63,9 @@ public class UserController {
 	@GetMapping("/editProfileChkPw")
 	public void editProfileChkPw() {}
 	
+	@GetMapping("/plusPoint")
+	public void plusPoint() {}
+	
 	
 	@RequestMapping(value = "/kakaologin", produces = "application/json", method = { RequestMethod.GET, RequestMethod.POST })
 	public String kakaoLogin(@RequestParam("code") String code, HttpSession session) throws Exception {

@@ -16,6 +16,13 @@
  		VALUES
  		( #{pNum}, #{tempPw} )
  	</insert>
+ 	
+ 	<insert id="insPointHistory">
+ 		INSERT INTO t_point_history
+ 		(userPk, point, result)
+ 		VALUES
+ 		(#{userPk}, #{point}, #{result}+#{point})
+ 	</insert>
  
  	<select id="selUser" resultType="UserDomain">
  		SELECT * FROM t_user
@@ -38,6 +45,12 @@
  	<select id="selUtils" resultType="UtilsEntity">
  		SELECT * FROM t_utils
  		WHERE tempPw = #{tempPw}
+ 	</select>
+ 	
+ 	<select id="selPointHistory" resultType="PointHistoryEntity">
+ 		SELECT * FROM t_point_history
+ 		WHERE userPk = #{userPk}
+ 		ORDER BY regDt DESC LIMIT 1
  	</select>
  	
  	<update id="updPw">

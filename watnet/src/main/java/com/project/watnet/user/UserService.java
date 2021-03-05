@@ -14,6 +14,7 @@ import com.project.watnet.FileUtils;
 import com.project.watnet.MailUtils;
 import com.project.watnet.SecurityUtils;
 import com.project.watnet.SmsUtils;
+import com.project.watnet.model.PointHistoryEntity;
 import com.project.watnet.model.UserDomain;
 import com.project.watnet.model.UserEntity;
 import com.project.watnet.model.UtilsEntity;
@@ -49,7 +50,6 @@ public class UserService {
 		}
 		vo.setUserPw(null);
 		vo.setRegDt(null);
-		vo.setProfileImg(null);
 		hs.setAttribute(Const.KEY_LOGINUSER, vo);
 		return 1;
 	}
@@ -69,6 +69,7 @@ public class UserService {
 			vo = mapper.selUser(vo);
 			vo.setModPoint(500);
 			mapper.updPoint(vo);
+			insPointHistory(vo.getUserPk(), 500);
 			
 			p.setUserPoint(1500);
 		} else {
@@ -77,7 +78,9 @@ public class UserService {
 		
 		if(mf==null) {
 			p.setProfileImg(null);
-			return mapper.insUser(p);
+			int result = mapper.insUser(p);
+			insPointHistory(p.getUserPk(), p.getUserPoint());
+			return result;
 		} else {
 			//profileImg DB에 저장하기 위해 하는부분
 			String profileImg = fUtils.getRandomFileNm(mf.getOriginalFilename());
@@ -96,8 +99,23 @@ public class UserService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
+			insPointHistory(p.getUserPk(), p.getUserPoint());
 			return result;
 		}
+	}
+	
+	public int insPointHistory(int userPk, int point) {
+		PointHistoryEntity vo2 = new PointHistoryEntity();
+		vo2.setUserPk(userPk);
+		vo2.setPoint(point);
+		
+		PointHistoryEntity vo = mapper.selPointHistory(vo2);
+		if(vo==null) {
+			vo2.setResult(0);
+		} else {
+			vo2.setResult(vo.getResult());
+		}
+		return mapper.insPointHistory(vo2);
 	}
 	
 	//0:휴대폰번호가 db에 없음		1:입력한 이메일과 db에 이메일이 다름		2:메일 발송 완료

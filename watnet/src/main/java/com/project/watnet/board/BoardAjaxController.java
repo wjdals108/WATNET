@@ -63,11 +63,6 @@ public class BoardAjaxController {
 		return service.selUserProfile(p);
 	}
 	
-	@DeleteMapping
-	public int quitParty(PartyUserEntity p) {
-		return service.quitParty(p);
-	}
-	
 	@GetMapping("/contents")
 	public List<ContentsEntity> concon(String category, String page) {
 		String con = "nfx\",\"wac";
@@ -118,5 +113,10 @@ public class BoardAjaxController {
 			list.add(temp);
 		}
 		return list;
+	}
+	
+	@DeleteMapping
+	public int quitParty(PartyUserEntity p) {
+		return service.quitParty(p);
 	}
 }

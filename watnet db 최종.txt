@@ -49,6 +49,7 @@ CREATE TABLE t_board(
 	startDt DATE NOT NULL,
 	endDt DATE NOT NULL,
 	price INT UNSIGNED NOT NULL,
+	tempPoint INT UNSIGNED DEFAULT 0,
 	ctnt VARCHAR(2000),
 	recruitNum INT(1) UNSIGNED DEFAULT 1 CHECK(recruitNum IN (1, 2, 3, 4)),
 	isDel INT(1) UNSIGNED DEFAULT 0 CHECK(isDel IN(0, 1)),
@@ -75,4 +76,13 @@ CREATE TABLE t_post(
 	isDel INT(1) UNSIGNED DEFAULT 0 CHECK(isDel IN(0, 1)),
 	FOREIGN KEY (boardPk) REFERENCES t_board (boardPk),
 	FOREIGN KEY (sendUserPk) REFERENCES t_user (userPk)
+);
+
+CREATE TABLE t_point_history(
+	historyPk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	userPk INT UNSIGNED NOT NULL,
+	point INT NOT NULL,
+	regDt DATETIME DEFAULT NOW(),
+	result INT UNSIGNED NOT NULL,
+	FOREIGN KEY (userPk) REFERENCES t_user (userPk)
 );
