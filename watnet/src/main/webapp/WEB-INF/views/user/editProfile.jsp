@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div class="edit-container">
-	<input id="hiddenUserPk" type="hidden" value="${param.userPk}">
+	<input id="hiddenUserPk" type="hidden" value="${sessionScope.loginUser.userPk}">
     <div class="pw-container">
         <h3 class="edit-h3">비밀번호 변경</h3>
         <div class="pw-form">

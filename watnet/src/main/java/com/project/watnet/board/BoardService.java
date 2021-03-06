@@ -10,7 +10,6 @@ import com.project.watnet.model.BoardDomain;
 import com.project.watnet.model.BoardEntity;
 import com.project.watnet.model.PartyUserEntity;
 import com.project.watnet.model.UserDomain;
-import com.project.watnet.model.UserEntity;
 import com.project.watnet.user.UserMapper;
 import com.project.watnet.user.UserService;
 
@@ -73,8 +72,7 @@ public class BoardService {
 		BoardDomain vo3 = new BoardDomain();
 		vo3.setBoardPk(p.getBoardPk());
 		vo3 = mapper.selBoard(vo3);
-		
-		uService.insPointHistory(p.getUserPk(), vo3.getPrice());
+		int point = vo3.getPrice() * -1;
 		
 		UserDomain selUserVo = new UserDomain();
 		selUserVo.setUserPk(p.getUserPk());
@@ -83,12 +81,19 @@ public class BoardService {
 			return -2;
 		}
 		
-		selUserVo.setModPoint(vo3.getPrice());
+		uService.insPointHistory(p.getUserPk(), point);
+		
+		selUserVo.setModPoint(point);
 		uMapper.updPoint(selUserVo);
+		
+		selUserVo.setUserPaidPoint(vo3.getPrice());
+		uMapper.updPaidPoint(selUserVo);
 		
 		vo.setBoardPk(p.getBoardPk());
 		mapper.updPlusRecruitNum(p);
+		updTempPoint(vo3, vo3.getPrice());
 		
+		uService.setHsUserPoint(selUserVo);
 		return mapper.insParty(p);
 	}
 	
@@ -101,7 +106,7 @@ public class BoardService {
 		return mapper.selBoard(p);
 	}
 	
-	public List<UserEntity> selUserProfile(PartyUserEntity p) {
+	public List<UserDomain> selUserProfile(PartyUserEntity p) {
 		return mapper.selUserProfile(p);
 	}
 	
@@ -121,19 +126,63 @@ public class BoardService {
 		return mapper.selBoard(vo2);
 	}
 	
+	public int updTempPoint(BoardDomain p, int modPoint) {
+		p.setModTempPoint(modPoint);
+		return mapper.updTempPoint(p);
+	}
+	
 	public int quitParty(PartyUserEntity p) {
 		if(selMyParty(p) == null) {
 			return 0;
 		}
 		PartyUserEntity vo = mapper.selParty(p);
+		BoardDomain vo2 = new BoardDomain();
+		vo2.setBoardPk(vo.getBoardPk());
+		vo2 = mapper.selBoard(vo2);					//temp price 알아올려고
 		
+		List<UserDomain> myAllPartyMember = selUserProfile(vo);
+		
+		int divisionMember = myAllPartyMember.size() - 1;
+		if(divisionMember <= 0) {
+			divisionMember = 1;
+		}
+		int modPoint = vo2.getTempPoint() / divisionMember;
 		if(vo.getIsLeader() == 1) {
 			mapper.quitParty(vo);
 			delPost(vo);
+			
+			for (UserDomain userVo : myAllPartyMember) {
+				if(vo.getUserPk() == userVo.getUserPk()) {				//리더한테는 point 주면 안됨
+					continue;
+				}
+				userVo.setModPoint(modPoint);
+				uMapper.updPoint(userVo);
+				
+				userVo.setUserPaidPoint(modPoint * -1);
+				uMapper.updPaidPoint(userVo);
+				
+				uService.insPointHistory(userVo.getUserPk(), modPoint);
+			}
 			return mapper.delBoard(vo);
 		} else {
 			mapper.updMinusRecruitNum(vo);
 			delPost(vo);
+			
+			UserDomain userVo = new UserDomain();
+			userVo.setUserPk(vo.getUserPk());
+			userVo = uMapper.selUser(userVo);
+			userVo.setModPoint(modPoint);
+			uMapper.updPoint(userVo);
+			
+			uService.insPointHistory(userVo.getUserPk(), modPoint);
+			
+			int tempModPoint = modPoint * -1;
+			updTempPoint(vo2, tempModPoint);
+			
+			userVo.setUserPaidPoint(tempModPoint);
+			uMapper.updPaidPoint(userVo);
+			
+			uService.setHsUserPoint(userVo);
 			return mapper.quitParty(vo);
 		}
 	}

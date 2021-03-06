@@ -71,6 +71,12 @@
  		WHERE userPk = #{userPk}
  	</update>
  	
+ 	<update id="updPaidPoint">
+ 		UPDATE t_user
+ 		SET userPaidPoint = userPaidPoint + #{userPaidPoint}
+ 		WHERE userPk = #{userPk}
+ 	</update>
+ 	
  	<delete id="delUtils">
  		DELETE FROM t_utils
  		WHERE tempPw = #{tempPw}

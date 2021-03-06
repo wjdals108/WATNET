@@ -12,11 +12,18 @@ public class BoardEntity {
 	private String startDt;
 	private String endDt;
 	private int price;
+	private int tempPoint;
 	private String ctnt;
 	private int recruitNum;
 	private int isDel;
 	
 	
+	public int getTempPoint() {
+		return tempPoint;
+	}
+	public void setTempPoint(int tempPoint) {
+		this.tempPoint = tempPoint;
+	}
 	public int getLeaderPk() {
 		return leaderPk;
 	}

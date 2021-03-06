@@ -4,9 +4,17 @@ public class BoardDomain extends BoardEntity{
 	private int userPk;
 	private String nm;
 	private String nickname;
+	private int modTempPoint;
 	
 	
-	
+	public int getModTempPoint() {
+		return modTempPoint;
+	}
+
+	public void setModTempPoint(int modPoint) {
+		this.modTempPoint = modPoint;
+	}
+
 	public String getNickname() {
 		return nickname;
 	}

@@ -68,14 +68,19 @@
 		WHERE A.boardPk = #{boardPk}
  	</select>
  	
- 	<select id="selUserProfile" resultType="UserEntity">
- 		SELECT A.*, B.userPk, B.nickname, B.profileImg
+ 	<select id="selUserProfile" resultType="UserDomain">
+ 		SELECT A.*, B.userPk, B.nickname, B.profileImg, B.userId
  		FROM t_partyuser A
  		INNER JOIN t_user B
  		ON A.userPk = B.userPk
  		WHERE A.boardPk = #{boardPk}
- 		
  	</select>
+ 	
+ 	<update id="updTempPoint">
+ 		UPDATE t_board
+ 		SET tempPoint = tempPoint + #{modTempPoint}
+ 		WHERE boardPk = #{boardPk}
+ 	</update>
  	
  	<update id="updPlusRecruitNum">
  		UPDATE t_board

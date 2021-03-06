@@ -14,9 +14,10 @@ public interface UserMapper {
 	int insPointHistory(PointHistoryEntity p);
 	UserDomain selUser(UserEntity p);
 	PointHistoryEntity selPointHistory(PointHistoryEntity p);
+	UtilsEntity selUtils(UtilsEntity p);
 	int updPw(UserEntity p);
 	int updPoint(UserDomain p);
 	int updProfile(UserDomain p);
-	UtilsEntity selUtils(UtilsEntity p);
+	int updPaidPoint(UserDomain p);
 	int delUtils(UtilsEntity p);
 }

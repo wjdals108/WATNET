@@ -9,6 +9,7 @@ var detailTextElem = document.querySelector('.detail-text')
 
 var hiddenBoardPkElem = document.querySelector('#hiddenBoardPk')
 var hiddenUserPkElem = document.querySelector('#loginUserPk')
+var hiddenUserPointElem = document.querySelector('#lgoinUserPoint')
 
 var detailCancleBtn = document.querySelector('#detail-cancleBtn')
 var detailSubBtnElem = document.querySelector('#detail-submitBtn')
@@ -158,9 +159,7 @@ function makeDetail(item) {
 	
 	detailTextElem.innerHTML = 
 	`
-	<p id="detail-ctnt">
-        ${item.ctnt}
-    </p>
+	<p id="detail-ctnt">${item.ctnt}</p>
 	<div class="detail-checkbox">
         <input id="detail-checkbox" type="checkbox">
         <span>파티에 대한 안내 및 규칙을 확인하였습니다.</span>
@@ -181,7 +180,7 @@ function makeDetail(item) {
 			return
 		}
 		
-		if(confirm(`정말 참여신청을 하시겠습니까?\n보유하고 계신 Point에서 ${numberWithCommas(item.price)}원 만큼 차감됩니다.`) == true) {
+		if(confirm(`정말 참여신청을 하시겠습니까?\n보유하고 계신 Point에서 ${numberWithCommas(item.price)}원 만큼 차감됩니다.\n현재 보유하고 계신 POINT : ${numberWithCommas(hiddenUserPointElem.value)}`) == true) {
 			var param = {
 				boardPk : hiddenBoardPkElem.value,
 				userPk : hiddenUserPkElem.value,
@@ -199,6 +198,10 @@ function makeDetail(item) {
 				if(myJson == -1) {
 					alert('이미 다른 파티에 가입되어있습니다.')
 					location.href = `/user/myParty?userPk=${hiddenUserPkElem.value}`
+					return
+				} else if(myJson == -2) {
+					alert('보유하신 point가 부족합니다.')
+					location.href = `/user/plusPoint?userPk=${hiddenUserPkElem.value}`
 					return
 				} else {
 					alert('파티 참여 신청 완료')

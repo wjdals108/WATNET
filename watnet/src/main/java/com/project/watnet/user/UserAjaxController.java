@@ -1,13 +1,17 @@
 package com.project.watnet.user;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.watnet.model.PointHistoryDomain;
 import com.project.watnet.model.UserDomain;
 import com.project.watnet.model.UserEntity;
 import com.project.watnet.model.UtilsEntity;
@@ -63,9 +67,24 @@ public class UserAjaxController {
 		return vo;
 	}
 	
+	@GetMapping("/selPlusPointHistory")
+	public List<PointHistoryDomain> selPlusPointHistory(PointHistoryDomain p) {
+		return null;
+	}
+	
+	@GetMapping("selMinusPointHistory")
+	public List<PointHistoryDomain> selMinusPointHistory(PointHistoryDomain p) {
+		return null;
+	}
+	
 	@PostMapping("/editProfile")
 	public int editProfile(UserDomain p) {
 		MultipartFile profileImg = p.getImg();
 		return service.updProfile(p, profileImg);
+	}
+	
+	@PutMapping
+	public int plusPoint(@RequestBody UserDomain p) {
+		return service.plusPoint(p);
 	}
 }

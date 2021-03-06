@@ -6,6 +6,7 @@
 	<input id="hiddenBoardPk" type="hidden" value="${param.boardPk}">
    	<input id="loginUserPNum" type="hidden" value="${sessionScope.loginUser.pNum}">
 	<input id="loginUserPk" type="hidden" value="${sessionScope.loginUser.userPk}">
+	<input id="lgoinUserPoint" type="hidden" value="${sessionScope.loginUser.userPoint}">
 	
 	<div class="detail-header">
     </div>

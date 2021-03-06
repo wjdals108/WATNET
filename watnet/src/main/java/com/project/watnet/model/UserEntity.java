@@ -10,8 +10,16 @@ public class UserEntity {
 	private String pNum;
 	private String profileImg;
 	private int userPoint;
+	private int userPaidPoint;
 	private int userCategory;
 	
+	
+	public int getUserPaidPoint() {
+		return userPaidPoint;
+	}
+	public void setUserPaidPoint(int userPaidPoint) {
+		this.userPaidPoint = userPaidPoint;
+	}
 	public int getUserPk() {
 		return userPk;
 	}

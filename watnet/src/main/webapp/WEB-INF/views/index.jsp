@@ -10,9 +10,8 @@
 			<span class="index-second-span"> 😉 여러분도 WATNET과 새롭게 함께하세요 </span>
 		</div> 
 		<div class="index-img-container">
-			<img id="netflix-logo" src="/res/img/netflix-logo.png"
-				alt="netflix logo"> <img id="watcha-logo"
-				src="/res/img/watcha-logo.png" alt="watcha logo">
+			<a href="/board/netflix"><img id="netflix-logo" src="/res/img/netflix-logo.png" alt="netflix logo"></a>
+			<a href="/board/watcha"><img id="watcha-logo" src="/res/img/watcha-logo.png" alt="watcha logo"></a>
 		</div>
 	</div>
 	<div class="phone-img">

@@ -219,5 +219,17 @@ public class UserService {
 		}
 		return mapper.updProfile(p);
 	}
-
+	
+	public int plusPoint(UserDomain p) {
+		int result = mapper.updPoint(p);
+		insPointHistory(p.getUserPk(), p.getModPoint());
+		setHsUserPoint(p);
+		return result;
+	}
+	
+	public void setHsUserPoint(UserDomain p) {
+		p = mapper.selUser(p);
+		UserDomain vo = (UserDomain)hs.getAttribute(Const.KEY_LOGINUSER);
+		vo.setUserPoint(p.getUserPoint());
+	}
 }
