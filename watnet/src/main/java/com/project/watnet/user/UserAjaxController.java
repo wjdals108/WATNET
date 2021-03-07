@@ -69,12 +69,12 @@ public class UserAjaxController {
 	
 	@GetMapping("/selPlusPointHistory")
 	public List<PointHistoryDomain> selPlusPointHistory(PointHistoryDomain p) {
-		return null;
+		return service.selPlusPointHistory(p);
 	}
 	
-	@GetMapping("selMinusPointHistory")
+	@GetMapping("/selMinusPointHistory")
 	public List<PointHistoryDomain> selMinusPointHistory(PointHistoryDomain p) {
-		return null;
+		return service.selMinusPointHistory(p);
 	}
 	
 	@PostMapping("/editProfile")

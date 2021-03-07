@@ -53,6 +53,24 @@
  		ORDER BY regDt DESC LIMIT 1
  	</select>
  	
+ 	<select id="selPlusPointHistory" resultType="PointHistoryDomain">
+ 		SELECT A.*, B.nickname
+ 		FROM t_point_history A
+ 		INNER JOIN t_user B
+ 		ON A.userPk = B.userPk
+ 		WHERE A.userPk = #{userPk}
+ 		AND A.point <![CDATA[ > ]]> 0
+ 	</select>
+ 	
+ 	<select id="selMinusPointHistory" resultType="PointHistoryDomain">
+ 		SELECT A.*, B.nickname
+ 		FROM t_point_history A
+ 		INNER JOIN t_user B
+ 		ON A.userPk = B.userPk
+ 		WHERE A.userPk = #{userPk}
+ 		AND A.point <![CDATA[ < ]]> 0
+ 	</select>
+ 	
  	<update id="updPw">
  		UPDATE t_user
  		SET userPw = #{userPw}

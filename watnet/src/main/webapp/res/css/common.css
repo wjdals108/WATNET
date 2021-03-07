@@ -218,8 +218,23 @@ input[type="number"]::-webkit-inner-spin-button {
     height: 90px;
 }
 
+.phone-img {
+	position: relative;
+	z-index: 1;
+}
+
 #phone {
     width: 600px;
+	z-index: 1;
+}
+
+.change-img {
+	position: absolute;
+	top: 54px;
+	left: 150px;
+	width: 300px;
+	height: 630px;
+	z-index: -1;
 }
 
 .index-second-container {
@@ -848,6 +863,10 @@ input[type="number"]::-webkit-inner-spin-button {
 #makeParty-detail-rule:focus {
     outline: none;
     box-shadow: 0 0 3px 1px #DB202C;
+}
+
+#makeParty-startDt {
+	width: 150px;
 }
 
 .width-200 {
@@ -1618,27 +1637,222 @@ input[type="number"]::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
+/* ----------------pointHistory css 부분 */
+.pointHistory-container {
+	max-width: 1280px;
+	margin: 0 auto;
+}
 
+.pointHistoryBtn-container {
+	margin: 20px auto;
+	max-width: 50%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
 
+#payHistoryBtn,
+#chargeHistoryBtn {
+	width: 40%;
+	height: 65px;
+	margin: 20px;
+	border: 0;
+	border-radius: 12px;
+	background-color: #DB202C;
+	color: #fff;
+	font-size: 24px;
+	font-weight: bold;
+	cursor: pointer;
+}
 
+.pointHistory-table {
+	margin: 20px auto;
+	width: 50%;
+}
 
+.pointHistory-table th {
+	text-align: left;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.pointHistory-table .th-nickname {
+	width: 10%;
+}
+
+.pointHistory-table .th-historyNm {
+	width: 10%;
+}
+
+.pointHistory-table .th-regDt {
+	width: 20%;
+}
+
+.pointHistory-table th, td {
+	border-bottom: 2px solid #dddddd;
+	height: 30px;
+}
+
+.pointHistory-result {
+	text-align: center;
+}
+
+/* ---------------contents css부분 */
+.contents-container {
+	max-width: 1280px;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 30px;
+}
+
+.contents-info {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.contentBtn-container {
+	margin: 20px auto 50px;
+	max-width: 50%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#netflixBtn,
+#watchaBtn {
+	width: 40%;
+	height: 65px;
+	margin: 20px;
+	border: 1px solid #DB202C;
+	border-radius: 12px;
+	background-color: #fff;
+	color: #000;
+	font-size: 24px;
+	font-weight: bold;
+	cursor: pointer;
+	outline: none;
+}
+
+#conList {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align: items: center;
+}
+
+.contents-img {
+	margin: 10px;
+}
 
 /* PC , 테블릿 가로 (해상도 768px ~ 1023px)*/
 @media all and (min-width:768px) and (max-width:1023px) {
-    /*스타일입력*/
-}
-
-/* 테블릿 세로 (해상도 768px ~ 1023px)*/
-@media all and (min-width:768px) and (max-width:1023px) {
-    /*스타일입력*/
+    #nav-home-li {
+    	display: none;
+    }
+    
+    #index-logout-btn {
+    	display: none;
+    }
+    
+    .phone-img {
+		display: none;	    	
+    }
+    
+    .intro-box-title-span {
+    	font-size: 20px;
+    }
+    
+    .intro-box-span {
+    	font-size: 16px;
+    }
+    
+    .board-article {
+		width: 260px;
+	}
+    
+    
 }
 
 /* 모바일 가로, 테블릿 세로 (해상도 480px ~ 767px)*/
-@media all and (min-width:480px) and (max-width:767px) {
-    /*스타일입력*/
-}
+@media all and (max-width:767px) {
+    .nav-container {
+    	padding: 0;
+    }   
+    
+    #watnet-logo {
+    	margin: 0 10px;
+    	width: 70px;
+    	height: auto;
+    }
+    
+    #nav-title-ul {
+    	padding: 0;
+    }
+    
+    #nav-title-ul > li {
+    	font-size: 14px; 
+    	margin: 5px;
+    }
+    
+    #nav-home-li {
+    	display: none;
+    }
+    
+    #index-logout-btn {
+    	display: none;
+    }
+    
+    .phone-img {
+		display: none;	    	
+    }
+    
+    .index-span {
+    	font-size: 30px;
+    }
+    
+    .index-second-span {
+    	font-size: 18px;
+    }
+    
+    .intro-span {
+    	font-size: 25px;
+    	margin: 0;
+    }
+    
+    #intro-left-img {
+    	width: 120px;
+    	height: auto;
+    	margin: 20px 0 0 0;
+	}
 
-/* 모바일 가로, 테블릿 세로 (해상도 ~ 479px)*/
-@media all and (max-width:479px) {
-    /*스타일입력*/
+	#intro-right-img {
+	    width: 140px;
+	    height: auto;
+	}
+	
+	.intro-box-title-span {
+		font-size: 16px;
+	}
+	
+	.intro-box-span {
+		font-size: 12px;
+	}
+	
+	.recVideo-img {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	
+	.recVideo-img > img {
+	    width: 40%;
+	    height: auto;
+	    margin: 10px;
+	    border-radius: 20px;
+	    cursor: pointer;
+	}
+	
+	.board-article {
+		width: 260px;
+	}
+    
 }

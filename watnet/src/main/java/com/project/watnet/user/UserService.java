@@ -1,6 +1,7 @@
 package com.project.watnet.user;
 
 import java.io.File;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +15,7 @@ import com.project.watnet.FileUtils;
 import com.project.watnet.MailUtils;
 import com.project.watnet.SecurityUtils;
 import com.project.watnet.SmsUtils;
+import com.project.watnet.model.PointHistoryDomain;
 import com.project.watnet.model.PointHistoryEntity;
 import com.project.watnet.model.UserDomain;
 import com.project.watnet.model.UserEntity;
@@ -182,6 +184,14 @@ public class UserService {
 	
 	public UserDomain selUser(UserDomain p) {
 		return mapper.selUser(p);
+	}
+	
+	public List<PointHistoryDomain> selPlusPointHistory(PointHistoryDomain p) {
+		return mapper.selPlusPointHistory(p);
+	}
+	
+	public List<PointHistoryDomain> selMinusPointHistory(PointHistoryDomain p) {
+		return mapper.selMinusPointHistory(p);
 	}
 	
 	public int updProfile(UserDomain p, MultipartFile mf) {

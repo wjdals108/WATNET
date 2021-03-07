@@ -10,8 +10,8 @@
 		<div class="nav-container">
 			<a href="/index"><img id="watnet-logo" src="/res/img/logo.png"
 				alt="WATNET LOGO"></a>
-			<ul>
-				<li><a href="/index">HOME</a></li>
+			<ul id="nav-title-ul">
+				<li id="nav-home-li"><a href="/index">HOME</a></li>
 				<li><a href="/board/contents">CONTENTS</a></li>
 				<c:forEach items="${menuList}" var="menu">
 				<li><a href="/board/${fn:toLowerCase(menu.nm)}">${menu.nm}</a></li>
@@ -38,7 +38,7 @@
 							</li>
 							<li>
 								<a href="/user/editProfileChkPw?userPk=${sessionScope.loginUser.userPk}">프로필 편집</a>
-								<a href="###">결제 내역 조회</a>
+								<a href="/user/pointHistory">결제 내역 조회</a>
 							</li>
 							<li>
 								<a href="/user/logout">로그아웃</a>							

@@ -8,6 +8,7 @@ if(netflixBtnElem) {
 		conSelElem = "netflix"
 		conListElem.innerHTML = ''
 		temp(1)
+		temp(2)
 	})
 }
 
@@ -16,12 +17,14 @@ if(watchaBtnElem) {
 		conSelElem = "watcha"
 		conListElem.innerHTML = ''
 		temp(1)
+		temp(2)
 	})
 }
 
 function conList(item) {
 	var img = document.createElement('div')
-	img.innerHTML = `<a href=${item.hrefSrc} target="_blank"><img src="${item.imgSrc}"></a>`
+	img.classList.add('contents-img')
+	img.innerHTML = `<a href=${item.hrefSrc} target="_blank"><img id="contents-imgfile" src="${item.imgSrc}"></a>`
 	conListElem.append(img)
 }
 
