@@ -17,7 +17,7 @@
 	<div class="phone-img">
 		<div class="phone-container">
 			<img id="phone" src="/res/img/phone.png" alt="phone">
-			<img class="change-img fade">
+			<img class="change-img fade" src="/res/img/post-capture.jpg">
 		</div>
 	</div>
 </div>

@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class KakaoController {
 
 	private final static String K_CLIENT_ID = "8cec444088d65a9daf32fac6ce92748a";
-	private final static String K_REDIRECT_URI = "http://localhost:9080/user/kakaologin";
+	private final static String K_REDIRECT_URI = "http://118.67.130.134:8080/user/kakaologin";
 
 	public static String getAuthorizationUrl(HttpSession session) {
 		String kakaoUrl = "https://kauth.kakao.com/oauth/authorize?" + "client_id=" + K_CLIENT_ID + "&redirect_uri="

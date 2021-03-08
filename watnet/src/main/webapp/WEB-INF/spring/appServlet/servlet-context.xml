@@ -36,9 +36,9 @@
 		<beans:property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
 		<beans:property name="jdbcUrl"
-			value="jdbc:mysql://localhost/watnet" />
+			value="jdbc:mysql://118.67.130.134/watnet?characterEncoding=UTF-8" />
 		<beans:property name="username" value="root" />
-		<beans:property name="password" value="1234" />
+		<beans:property name="password" value="watnet2020" />
 	</beans:bean>
 
 	<beans:bean id="dataSource"

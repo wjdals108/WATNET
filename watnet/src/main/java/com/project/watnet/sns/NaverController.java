@@ -21,7 +21,7 @@ public class NaverController {
 
 	private final static String CLIENT_ID = "qc7hmjnaSbrhy7mFuO29";
 	private final static String CLIENT_SECRET = "UGetQnytdC";
-	private final static String REDIRECT_URI = "http://localhost:9080/user/naverlogin";
+	private final static String REDIRECT_URI = "http://118.67.130.134:8080/user/naverlogin";
 	private final static String SESSION_STATE = "oauth_state";
 
 	/* 네아로 인증 URL 생성 Method */

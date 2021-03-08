@@ -32,6 +32,8 @@ public class PostService {
 		
 		p.setBoardPk(getBoardPk(vo));
 		
+		System.out.println(p.getCtnt());
+		
 		return mapper.insPost(p);
 	}
 	
