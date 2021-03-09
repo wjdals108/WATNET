@@ -12,9 +12,9 @@
 
 ## 목차
 1. 개요
-2. 리스트2
-3. 리스트3
-4. 리스트4
+2. 주요기능
+3. 사용기술
+4. 개발진
 <br>
 <br>
 
@@ -93,3 +93,21 @@
     <kbd><img src="/forReadme/logo/jbcrypt.png" height="100px"></kbd>
     <kbd><img src="/forReadme/logo/jsoup.png" height="100px"></kbd>
 </p>
+
+## 4. 개발진
+<div align="center">
+<table align="center">
+  <tr>
+    <th align="center"><strong>김정민</strong></th>
+    <th align="center"><strong>김시현</strong></th>
+  </tr>
+  <tr>
+    <td align="center">hn99710@naver.com</td>
+    <td align="center">sukend@daum.net</td>
+  </tr>
+  <tr>
+    <td align="center">github.com/wjdals108</td>
+    <td align="center">github.com/SiHyun-Kim</td>
+  </tr>
+</table>
+</div>
