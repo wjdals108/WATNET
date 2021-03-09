@@ -3,5 +3,5 @@
 ### 118.67.130.134:8080/index
 
 <p align="center">
-  <img src="/watnet/src/main/webapp/res/img/logo.png" width="50%" height="auto">
+  <img src="/watnet/src/main/webapp/res/img/logo.png" width="30%" height="auto">
 </p>
