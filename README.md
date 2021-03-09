@@ -6,11 +6,11 @@
 ## "OTT 사이트(NETFLIX, WATCHA) 파티 중개 및 매칭 사이트"  
 <br>
 <br>
-***
+
 <br>
-<a href="http://118.67.130.134:8080/index">WATNET 사이트 링크</a>
+<a href="http://118.67.130.134:8080/index" target="_blank">WATNET 사이트 링크</a>
 <br>
-***
+
 <br>
 <br>
 <p>
