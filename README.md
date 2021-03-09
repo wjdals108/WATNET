@@ -6,7 +6,7 @@
 ## "OTT 사이트(NETFLIX, WATCHA) 파티 중개 및 매칭 사이트"  
 <br>
 <p>
-    <img src="/forReadme/캡처/index_캡처.jpg" width="100%">
+    <img src="/forReadme/캡처/index_캡처.JPG" width="100%">
 </p>
 <br>
 
@@ -30,18 +30,18 @@
 ## 2. 주요 기능
 * **CONTENTS 페이지** _jsoup를 이용하여 자료를 가져와서 화면에 나타냅니다.
 <br>
-<img src="/forReadme/캡처/contents_캡처.jpg" width="100%">
+<img src="/forReadme/캡처/contents_캡처.JPG" width="100%">
 <br>
 <br>
 
 * **각 OTT 사이트 파티모집 리스트** _파티모집 등록을 할 수 있고, 파티모집 게시글에 들어가서 참여를 할 수 있습니다.
 <br>
-<img src="/forReadme/캡처/board_캡처.jpg" width="100%">
+<img src="/forReadme/캡처/board_캡처.JPG" width="100%">
 <br>
 <br>
 
 * 파티모집
-<img src="/forReadme/캡처/makeparty_캡처.jpg" width="100%">
+<img src="/forReadme/캡처/makeparty_캡처.JPG" width="100%">
 <br>
 <br>
 
