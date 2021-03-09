@@ -5,6 +5,14 @@
 ***
 ## "OTT 사이트(NETFLIX, WATCHA) 파티 중개 및 매칭 사이트"  
 <br>
+<br>
+***
+<br>
+[WATNET 사이트 링크](http://118.67.130.134:8080/index)
+<br>
+***
+<br>
+<br>
 <p>
     <img src="/forReadme/캡처/index_캡처.JPG" width="100%">
 </p>
