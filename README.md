@@ -9,9 +9,11 @@
 
 <br>
 <a href="http://118.67.130.134:8080/index" target="_blank">WATNET 사이트 링크</a>
+<p>
 예시 ID/PW 
 Leader : mic/1234
 파티원 : mic2/1234
+</p>
 <br>
 
 <br>
