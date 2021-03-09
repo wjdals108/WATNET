@@ -6,6 +6,6 @@
 
 ***
 
-<p align="center">
-  ### "OTT 사이트(NETFLIX, WATCHA) 중개 및 매칭 사이트"  
+### <p align="center">
+  "OTT 사이트(NETFLIX, WATCHA) 중개 및 매칭 사이트"  
 </p>
