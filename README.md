@@ -1,12 +1,12 @@
 <p align="center">
-    <img src="./forReadme/img/logo.png" width="30%">
+    <img src="/forReadme/img/logo.png" width="30%">
 </p>
 
 ***
 ## "OTT 사이트(NETFLIX, WATCHA) 파티 중개 및 매칭 사이트"  
 <br>
 <p>
-    <img src="./forReadme/캡처/index_캡처.jpg" width="100%">
+    <img src="/forReadme/캡처/index_캡처.jpg" width="100%">
 </p>
 <br>
 
@@ -30,66 +30,66 @@
 ## 2. 주요 기능
 * **CONTENTS 페이지** _jsoup를 이용하여 자료를 가져와서 화면에 나타냅니다.
 <br>
-<img src="./forReadme/캡처/contents_캡처.jpg" width="100%">
+<img src="/forReadme/캡처/contents_캡처.jpg" width="100%">
 <br>
 <br>
 
 * **각 OTT 사이트 파티모집 리스트** _파티모집 등록을 할 수 있고, 파티모집 게시글에 들어가서 참여를 할 수 있습니다.
 <br>
-<img src="./forReadme/캡처/board_캡처.jpg" width="100%">
+<img src="/forReadme/캡처/board_캡처.jpg" width="100%">
 <br>
 <br>
 
 * 파티모집
-<img src="./forReadme/캡처/makeparty_캡처.jpg" width="100%">
+<img src="/forReadme/캡처/makeparty_캡처.jpg" width="100%">
 <br>
 <br>
 
 * 게시글 detail 페이지
-<img src="./forReadme/캡처/detail_캡처.png" width="100%">
+<img src="/forReadme/캡처/detail_캡처.png" width="100%">
 <br>
 <br>
 
 * **myParty 페이지** _myParty 페이지에서 나의 파티 정보를 쉽게 확인 하실 수 있습니다.
-<img src="./forReadme/캡처/myParty_캡처.png" width="100%">
+<img src="/forReadme/캡처/myParty_캡처.png" width="100%">
 <br>
 <br>
 
 * 공유 ID/PW 확인 modal 창 - 공유 ID/PW는 파티 Leader는 언제든지 확인이 가능하지만 사용자는 파티 시작날짜가 되어야지 확인이 가능합니다.
-<img src="./forReadme/캡처/shareInfo_캡처.png" width="100%">
+<img src="/forReadme/캡처/shareInfo_캡처.png" width="100%">
 <br>
 <br>
 
 * 파티원들 간의 쪽지보내기 modal 창
-<img src="./forReadme/캡처/post_캡처.png" width="100%">
+<img src="/forReadme/캡처/post_캡처.png" width="100%">
 <br>
 <br>
 
 * **나의 결제 및 충전 내역 확인 page** - 나의 결제 및 충전 내역을 쉽게 확인 할 수 있습니다.
 * 결제 내역
-<img src="./forReadme/캡처/결제내역_캡처.png" width="100%">
+<img src="/forReadme/캡처/결제내역_캡처.png" width="100%">
 <br>
 <br>
 
 * 충전 내역
-<img src="./forReadme/캡처/충전내역_캡처.png" width="100%">
+<img src="/forReadme/캡처/충전내역_캡처.png" width="100%">
 <br>
 <br>
 
 ## 3. 사용 기술
 <p align="center">
-    <kbd><img src="./forReadme/logo/eclipse.png" height="100px"></kbd>
-    <kbd><img src="./forReadme/logo/mariadb.png" height="100px"></kbd>
-    <kbd><img src="./forReadme/logo/apachetomcat.png" height="100px"></kbd>
-    <kbd><img src="./forReadme/logo/spring.png" height="100px"></kbd>
-    <kbd><img src="./forReadme/logo/ajax.png" height="100px"></kbd>
-    <kbd><img src="./forReadme/logo/json.png" height="100px"></kbd>
-    <kbd><img src="./forReadme/logo/java.jpg" height="100px"></kbd>
-    <kbd><img src="./forReadme/logo/jsp.png" height="100px"></kbd>
-    <kbd><img src="./forReadme/logo/tiles.png" height="100px"></kbd>
-    <kbd><img src="./forReadme/logo/html.png" height="100px"></kbd>
-    <kbd><img src="./forReadme/logo/css.png" height="100px"></kbd>
-    <kbd><img src="./forReadme/logo/javascript.png" height="100px"></kbd>
-    <kbd><img src="./forReadme/logo/jbcrypt.png" height="100px"></kbd>
-    <kbd><img src="./forReadme/logo/jsoup.png" height="100px"></kbd>
+    <kbd><img src="/forReadme/logo/eclipse.png" height="100px"></kbd>
+    <kbd><img src="/forReadme/logo/mariadb.png" height="100px"></kbd>
+    <kbd><img src="/forReadme/logo/apachetomcat.png" height="100px"></kbd>
+    <kbd><img src="/forReadme/logo/spring.png" height="100px"></kbd>
+    <kbd><img src="/forReadme/logo/ajax.png" height="100px"></kbd>
+    <kbd><img src="/forReadme/logo/json.png" height="100px"></kbd>
+    <kbd><img src="/forReadme/logo/java.jpg" height="100px"></kbd>
+    <kbd><img src="/forReadme/logo/jsp.png" height="100px"></kbd>
+    <kbd><img src="/forReadme/logo/tiles.png" height="100px"></kbd>
+    <kbd><img src="/forReadme/logo/html.png" height="100px"></kbd>
+    <kbd><img src="/forReadme/logo/css.png" height="100px"></kbd>
+    <kbd><img src="/forReadme/logo/javascript.png" height="100px"></kbd>
+    <kbd><img src="/forReadme/logo/jbcrypt.png" height="100px"></kbd>
+    <kbd><img src="/forReadme/logo/jsoup.png" height="100px"></kbd>
 </p>
