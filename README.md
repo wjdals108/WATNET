@@ -8,7 +8,7 @@
 <br>
 ***
 <br>
-[WATNET 사이트 링크](http://118.67.130.134:8080/index)
+<a href="http://118.67.130.134:8080/index">WATNET 사이트 링크</a>
 <br>
 ***
 <br>
